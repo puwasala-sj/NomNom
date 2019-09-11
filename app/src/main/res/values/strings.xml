@@ -6,4 +6,8 @@
     <string name="textView2">Welcome to Nom Nom</string>
     <string name="textView3">Life is like a restaurant; you can have anything you want as long as you are willing to pay the price.</string>
     <string name="btn3">Menu</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="textView4">Not Registered?</string>
+    <string name="textView5">Register</string>
 </resources>
