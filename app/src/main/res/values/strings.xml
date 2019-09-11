@@ -3,4 +3,7 @@
     <string name="btn1">Login</string>
     <string name="btn2">Sign Up</string>
     <string name="textView1">Login</string>
+    <string name="textView2">Welcome to Nom Nom</string>
+    <string name="textView3">Life is like a restaurant; you can have anything you want as long as you are willing to pay the price.</string>
+    <string name="btn3">Menu</string>
 </resources>
