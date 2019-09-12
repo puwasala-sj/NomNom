@@ -24,18 +24,12 @@ public class LoginActivity extends AppCompatActivity {
         Password = (EditText)findViewById(R.id.password);
         Login = (Button) findViewById(R.id.btn1);
         Notregister = (TextView)findViewById(R.id.textView5);
-
+        Notregister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent register = new Intent(LoginActivity.this,Register.class);
+                startActivity(register);
+            }
+        });
     }
-
-    private void validate(String Username, String Password){
-        if((Username == "Admin") && (Password == "1234")){
-
-        }
-
-    }
-    public void onClick(View view){
-        Intent intent = new Intent(this,Home.class);
-        startActivity(intent);
-    }
-
 }
