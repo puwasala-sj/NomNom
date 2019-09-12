@@ -24,4 +24,9 @@
     <string name="buttonDelete">Delete Order</string>
     <string name="orderId">Order ID</string>
     <string name="editId">EditId</string>
+    <string name="textView6">When you are here, you are family..</string>
+    <string name="email">E-mail</string>
+    <string name="textView7">Confirm Password</string>
+    <string name="btn4">Register Now</string>
+
 </resources>
