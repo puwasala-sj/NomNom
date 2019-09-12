@@ -6,4 +6,149 @@
     android:layout_height="match_parent"
     tools:context=".PlaceOrder">
 
+    <TextView
+        android:id="@+id/placeOrder"
+        android:layout_width="290dp"
+        android:layout_height="66dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/placeOrder"
+        android:textColor="#e0af1f"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="105dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="168dp"
+        android:text="@string/name"
+        android:textSize="22sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/address"
+        android:layout_width="168dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="72dp"
+        android:text="@string/address"
+        android:textSize="22sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/name" />
+
+    <TextView
+        android:id="@+id/quantity"
+        android:layout_width="114dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/quantity"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.557" />
+
+    <EditText
+        android:id="@+id/editText_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:autofillHints="@string/name1"
+        android:ems="10"
+        android:hint="@string/name1"
+        android:inputType="@string/name1"
+        app:layout_constraintBaseline_toBaselineOf="@+id/name"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <EditText
+        android:id="@+id/editText_address"
+        android:layout_width="203dp"
+        android:layout_height="119dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:autofillHints="@string/address1"
+        android:ems="10"
+        android:hint="@string/address1"
+        android:inputType="@string/address1"
+        app:layout_constraintBaseline_toBaselineOf="@+id/address"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/address" />
+
+    <EditText
+        android:id="@+id/editText_quantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:autofillHints="@string/quantity1"
+        android:ems="10"
+        android:hint="@string/quantity1"
+        android:inputType="@string/quantity1"
+        app:layout_constraintBaseline_toBaselineOf="@+id/quantity"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <RatingBar
+        android:id="@+id/ratingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/quantity"
+        app:layout_constraintVertical_bias="0.317" />
+
+    <Button
+        android:id="@+id/order"
+        android:layout_width="wrap_content"
+        android:layout_height="6dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="80dp"
+        android:text="@string/order"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/oid"
+        android:layout_width="98dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/orderId"
+        app:layout_constraintEnd_toStartOf="@+id/editTextId"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/placeOrder" />
+
+    <EditText
+        android:id="@+id/editTextId"
+        android:layout_width="123dp"
+        android:layout_height="33dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:autofillHints="@string/orderId"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="@string/editId"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/oid"
+        app:layout_constraintTop_toBottomOf="@+id/placeOrder" />
 </androidx.constraintlayout.widget.ConstraintLayout>

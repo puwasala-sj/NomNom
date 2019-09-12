@@ -10,4 +10,18 @@
     <string name="password">Password</string>
     <string name="textView4">Not Registered?</string>
     <string name="textView5">Register</string>
+    <string name="placeOrder">Place Your Order</string>
+    <string name="order">Order Now</string>
+    <string name="name">Name:</string>
+    <string name="address">Delivery Address:</string>
+    <string name="quantity">Quantity:</string>
+    <string name="name1">Name</string>
+    <string name="address1">Address</string>
+    <string name="quantity1">Quantity</string>
+    <string name="yourOrder">Your Orders</string>
+    <string name="buttonView">View Orders</string>
+    <string name="buttonEdit">Edit Order</string>
+    <string name="buttonDelete">Delete Order</string>
+    <string name="orderId">Order ID</string>
+    <string name="editId">EditId</string>
 </resources>
