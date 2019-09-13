@@ -13,10 +13,10 @@ import android.widget.Toast;
 import com.example.nomnom.Database.DatabaseHelper;
 
 public class LoginActivity extends AppCompatActivity {
-    private EditText Username;
-    private EditText Password;
-    private Button Login;
-    private TextView Notregister;
+    EditText Username;
+    EditText Password;
+    Button Login;
+    TextView Notregister;
     DatabaseHelper db;
 
     @Override
