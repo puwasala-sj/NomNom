@@ -85,6 +85,12 @@ public class FoodList extends AppCompatActivity {
 
                         } else {
                             //delete
+                            Cursor c = Menu.db.getData("SELECT id FROM FOOD");
+                            ArrayList<Integer> arrID = new ArrayList<Integer>();
+                            while(c.moveToNext()) {
+                                arrID.add(c.getInt(0));
+                            }
+                            showDialogDelete(arrID.get(position));
 
                         }
 
@@ -171,6 +177,7 @@ public class FoodList extends AppCompatActivity {
 
             }
         });
+        dialogDelete.show();
     }
 
     private void updateFoodList(){
