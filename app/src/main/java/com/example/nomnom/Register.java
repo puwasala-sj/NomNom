@@ -12,11 +12,11 @@ import android.widget.Toast;
 import com.example.nomnom.Database.DatabaseHelper;
 
 public class Register extends AppCompatActivity {
-    private EditText Username;
-    private EditText Email;
-    private EditText Password;
-    private EditText ConfirmPassword;
-    private Button RegisterNow;
+    EditText Username;
+    EditText Email;
+    EditText Password;
+    EditText ConfirmPassword;
+    Button RegisterNow;
     DatabaseHelper db;
 
 
