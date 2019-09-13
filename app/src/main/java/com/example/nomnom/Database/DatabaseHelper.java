@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.database.sqlite.SQLiteStatement;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "NomNom.db";
@@ -87,6 +88,48 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         return db.delete(UserMaster.Orders.TABLE_NAME, "orderID = ?", new String[] {orderID});
     }
+
+    //Hansini
+    public void queryData(String sql){
+        SQLiteDatabase database = getWritableDatabase();
+        database.execSQL(sql);
+    }
+
+    public void insertData(String name, String price, byte[] image){
+        SQLiteDatabase database = getWritableDatabase();
+        String sql = "INSERT INTO FOOD VALUES (NULL, ?, ?, ?)";
+
+        SQLiteStatement statement = database.compileStatement(sql);
+        statement.clearBindings();
+
+        statement.bindString(1, name);
+        statement.bindString(2, price);
+        statement.bindBlob(3, image);
+
+        statement.executeInsert();
+    }
+
+    public void updateData(String name, String price, byte[] image, int id){
+        SQLiteDatabase database = getWritableDatabase();
+
+        String sql = "UPDATE FOOD SET name = ?, price = ?, image = ? WHERE id = ?";
+        SQLiteStatement statement = database.compileStatement(sql);
+
+        statement.bindString(1,name);
+        statement.bindString(2,price);
+        statement.bindBlob(3,image);
+        statement.bindDouble(4,(double)id);
+
+        statement.execute();
+        database.close();
+    }
+
+    public Cursor getData (String sql){
+        SQLiteDatabase database = getReadableDatabase();
+        return database.rawQuery(sql,null);
+    }
+
+
 
 
 }
