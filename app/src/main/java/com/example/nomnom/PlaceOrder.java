@@ -25,7 +25,7 @@ public class PlaceOrder extends AppCompatActivity {
         editAddress = (EditText) findViewById(R.id.editText_address);
         editContactNo = (EditText) findViewById(R.id.editText_contact);
         editQuantity = (EditText) findViewById(R.id.editText_quantity);
-        btnAddData = (Button) findViewById(R.id.btn7);
+        btnAddData = (Button) findViewById(R.id.order);
         AddData();
 
     }

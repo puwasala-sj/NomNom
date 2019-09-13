@@ -27,9 +27,9 @@ public class EditOrder extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_order);
 
-        button_View = (Button) findViewById(R.id.buttonView);
-        button_Update = (Button) findViewById(R.id.buttonEdit);
-        button_Delete = (Button) findViewById(R.id.buttonDelete);
+        button_View = (Button) findViewById(R.id.viewOrder);
+        button_Update = (Button) findViewById(R.id.editOrder);
+        button_Delete = (Button) findViewById(R.id.deleteOrder);
         editText_id = (EditText) findViewById(R.id.editText_Id);
         viewAll();
         UpdateData();

@@ -24,5 +24,7 @@ public class FeedBack extends AppCompatActivity {
         Topic = (EditText)findViewById(R.id.topic);
         Description = (EditText)findViewById(R.id.description);
         Send = (Button) findViewById(R.id.send);
+
+
     }
 }

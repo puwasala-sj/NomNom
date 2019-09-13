@@ -97,12 +97,12 @@
         app:layout_constraintTop_toBottomOf="@+id/editText_contact" />
 
     <Button
-        android:id="@+id/btn7"
+        android:id="@+id/order"
         android:layout_width="157dp"
         android:layout_height="65dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="32dp"
-        android:text="@string/btn7"
+        android:text="@string/order"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

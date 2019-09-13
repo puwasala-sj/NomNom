@@ -27,45 +27,45 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
-        android:id="@+id/buttonView"
+        android:id="@+id/viewOrder"
         android:layout_width="166dp"
         android:layout_height="68dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="168dp"
         android:layout_marginEnd="200dp"
-        android:text="@string/buttonView"
+        android:text="@string/viewOrder"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.54"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/buttonEdit"
+        android:id="@+id/editOrder"
         android:layout_width="166dp"
         android:layout_height="68dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="28dp"
         android:layout_marginEnd="200dp"
-        android:text="@string/buttonEdit"
+        android:text="@string/editOrder"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.54"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonView" />
+        app:layout_constraintTop_toBottomOf="@+id/viewOrder" />
 
     <Button
-        android:id="@+id/buttonDelete"
+        android:id="@+id/deleteOrder"
         android:layout_width="166dp"
         android:layout_height="68dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="200dp"
         android:layout_marginBottom="172dp"
-        android:text="@string/buttonDelete"
+        android:text="@string/deleteOrder"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.54"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonEdit"
+        app:layout_constraintTop_toBottomOf="@+id/editOrder"
         app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

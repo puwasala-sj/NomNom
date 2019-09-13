@@ -15,7 +15,7 @@
         android:layout_marginBottom="662dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="@string/edtName" />
+        android:hint="@string/name" />
 
     <EditText
         android:id="@+id/edtPrice"
@@ -27,7 +27,7 @@
         android:layout_marginBottom="584dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="@string/edtPrice" />
+        android:hint="@string/price" />
 
     <ImageView
         android:id="@+id/imageView"

@@ -34,4 +34,6 @@
     <string name="orderId">Order ID</string>
     <string name="editId">EditId</string>
     <string name="already_registered">Already registered?</string>
+    <string name="topic">Topic</string>
+    <string name="description">Description</string>
 </resources>
