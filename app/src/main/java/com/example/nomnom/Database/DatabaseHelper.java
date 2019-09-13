@@ -130,7 +130,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         int count = cursor.getCount();
         cursor.close();
         db.close();
-        ;
+        
         if (count > 0)
             return true;
         else
