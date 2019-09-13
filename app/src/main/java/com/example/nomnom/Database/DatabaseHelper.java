@@ -7,6 +7,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteStatement;
 
+import static android.provider.BaseColumns._ID;
+import static com.example.nomnom.Database.UserMaster.Register.TABLE_NAME;
+
 public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "NomNom.db";
 
@@ -28,6 +31,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         db.execSQL(SQL_CREATE_ENTRIES_ORDER);
 
+        //Create Table Register
+        String SQL_CREATE_ENTRIES_REGISTER =
+                "CREATE TABLE " + TABLE_NAME + " (" +
+                        UserMaster.Register._ID + " INTEGER PRIMARY KEY," +
+                        UserMaster.Register.COLUMN_NAME2 + " TEXT," +
+                        UserMaster.Register.COLUMN_NAME3 + " TEXT," +
+                        UserMaster.Register.COLUMN_NAME4 + " TEXT)";
+
+        db.execSQL(SQL_CREATE_ENTRIES_REGISTER);
+
         //Create Table FeedBack
         String SQL_CREATE_ENTRIES_FEEDBACK =
                 "CREATE TABLE " + UserMaster.Feedback.TABLE_NAME + " (" +
@@ -44,6 +57,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
         db.execSQL("DROP TABLE IF EXISTS " + UserMaster.Feedback.TABLE_NAME);
         onCreate(db);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+        onCreate(db);
+
     }
 
     //Add data to Order table
@@ -88,6 +104,36 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         return db.delete(UserMaster.Orders.TABLE_NAME, "orderID = ?", new String[] {orderID});
     }
+    //Add user
+    public long addUser(String username, String email,String password) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(UserMaster.Register.COLUMN_NAME1, _ID);
+        values.put(UserMaster.Register.COLUMN_NAME2, username);
+        values.put(UserMaster.Register.COLUMN_NAME3, email);
+        values.put(UserMaster.Register.COLUMN_NAME4, password);
+
+        long result = db.insert(UserMaster.Register.TABLE_NAME, null, values);
+        db.close();
+        return result;
+
+    }
+
+    public boolean checkUser  (String  username, String password) {
+        String[] columns = {UserMaster.Register.COLUMN_NAME1};
+        SQLiteDatabase db = getReadableDatabase();
+        String selection = UserMaster.Register.COLUMN_NAME2 + "=?" + "and" + UserMaster.Register.COLUMN_NAME4 + "m?";
+        String[] selectionArgs = {username, password};
+        Cursor cursor = db.query  (UserMaster.Register.TABLE_NAME, columns, selection, selectionArgs, null, null, null);
+        int count = cursor.getCount();
+        cursor.close();
+        db.close();
+        ;
+        if (count > 0)
+            return true;
+        else
+            return false;
 
     //Menu
     public void queryData(String sql){
@@ -145,4 +191,5 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
+    }
 }

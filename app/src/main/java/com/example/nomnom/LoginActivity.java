@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.nomnom.Database.DatabaseHelper;
 
@@ -36,12 +37,22 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        Login.setOnClickListener(new View.OnClickListener() {
+        Login.setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onClick(View view) {
-                Intent register = new Intent(LoginActivity.this,Home.class);
-                startActivity(register);
+            public void  onClick(View view){
+                String username = Username.getText().toString().trim();
+                String password = Password.getText().toString().trim();
+                Boolean result = db.checkUser(username, password);
+                if (result ==  true)
+                {
+                    Toast.makeText(LoginActivity.this, "Successfully Logged In",Toast.LENGTH_SHORT) .show();
+                }
+                else
+                {
+                    Toast.makeText(LoginActivity.this, "Login Error",Toast.LENGTH_SHORT) .show();
+                }
             }
         });
+
     }
 }
