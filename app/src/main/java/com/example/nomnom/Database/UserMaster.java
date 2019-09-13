@@ -19,7 +19,7 @@ public final class UserMaster {
     //Register Table
     protected static class Register implements BaseColumns{
         public static final String TABLE_NAME = "Register";
-        public static final String COLUMN_NAME1 = "id";
+        public static final String _ID = "id";
         public static final String COLUMN_NAME2 = "username";
         public static final String COLUMN_NAME3 = "email";
         public static final String COLUMN_NAME4 = "password";

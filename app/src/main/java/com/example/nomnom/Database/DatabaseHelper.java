@@ -57,7 +57,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
         db.execSQL("DROP TABLE IF EXISTS " + UserMaster.Feedback.TABLE_NAME);
         onCreate(db);
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + UserMaster.Register.TABLE_NAME);
         onCreate(db);
 
     }
@@ -104,24 +104,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         return db.delete(UserMaster.Orders.TABLE_NAME, "orderID = ?", new String[] {orderID});
     }
+
+    DatabaseHelper dbHelper = new DatabaseHelper(getContext());
     //Add user
-    public long addUser(String username, String email,String password) {
-        SQLiteDatabase db = this.getWritableDatabase();
+    public boolean addUser(String username, String email,String password) {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(UserMaster.Register.COLUMN_NAME1, _ID);
         values.put(UserMaster.Register.COLUMN_NAME2, username);
         values.put(UserMaster.Register.COLUMN_NAME3, email);
         values.put(UserMaster.Register.COLUMN_NAME4, password);
 
         long result = db.insert(UserMaster.Register.TABLE_NAME, null, values);
-        db.close();
-        return result;
-
+        if (result == -1)
+            return false;
+        else
+            return true;
     }
 
     public boolean checkUser  (String  username, String password) {
-        String[] columns = {UserMaster.Register.COLUMN_NAME1};
+        String[] columns = {UserMaster.Register._ID};
         SQLiteDatabase db = getReadableDatabase();
         String selection = UserMaster.Register.COLUMN_NAME2 + "=?" + "and" + UserMaster.Register.COLUMN_NAME4 + "m?";
         String[] selectionArgs = {username, password};
@@ -168,6 +170,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         statement.execute();
         database.close();
+    }
+    public void deleteData(int id){
+        SQLiteDatabase database = getWritableDatabase();
+
+        String sql = "DELETE FROM FOOD WHERE id = ?";
+        SQLiteStatement statement = database.compileStatement(sql);
+        statement.clearBindings();
+        statement.bindDouble(1,(double)id);
+
+        statement.execute();
+        database.close();
+
     }
 
     public Cursor getData (String sql){
