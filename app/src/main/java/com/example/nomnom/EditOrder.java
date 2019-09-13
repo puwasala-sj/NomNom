@@ -10,11 +10,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.nomnom.Database.DatabaseHelper;
+
 public class EditOrder extends AppCompatActivity {
 
     DatabaseHelper myDb;
-    EditText editTextid;
-    EditText editName, editAddress, editQuantity;
+    EditText editText_id;
+    EditText editText_name, editText_address,editText_contact, editQuantity;
 
     Button button_View;
     Button button_Update;
@@ -28,7 +30,7 @@ public class EditOrder extends AppCompatActivity {
         button_View = (Button) findViewById(R.id.buttonView);
         button_Update = (Button) findViewById(R.id.buttonEdit);
         button_Delete = (Button) findViewById(R.id.buttonDelete);
-        editTextid = (EditText) findViewById(R.id.editTextId);
+        editText_id = (EditText) findViewById(R.id.editText_Id);
         viewAll();
         UpdateData();
         DeleteData();
@@ -51,6 +53,7 @@ public class EditOrder extends AppCompatActivity {
                             buffer.append("ID :" + res.getString(0) + "\n");
                             buffer.append("Name :" + res.getString(1) + "\n");
                             buffer.append("Address :" + res.getString(2) + "\n");
+                            buffer.append("ContactNumber :" + res.getString(2) + "\n");
                             buffer.append("Quantity :" + res.getString(3) + "\n\n");
                         }
 
@@ -75,8 +78,8 @@ public class EditOrder extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        boolean isUpdate = myDb.updateData(editTextid.getText().toString(), (editName.getText().toString()),
-                                editAddress.getText().toString(),
+                        boolean isUpdate = myDb.updateData(editText_id.getText().toString(), (editText_name.getText().toString()),
+                                (editText_name.getText().toString()),(editText_address.getText().toString()),
                                 editQuantity.getText().toString());
                         if (isUpdate == true) {
                             Toast.makeText(EditOrder.this, "Data Updated Successfully", Toast.LENGTH_LONG).show();
@@ -94,7 +97,7 @@ public class EditOrder extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Integer deletedRows = myDb.deleteData(editTextid.getText().toString());
+                        Integer deletedRows = myDb.deleteData(editText_id.getText().toString());
                         if(deletedRows > 0)
                             Toast.makeText(EditOrder.this, "Data Deleted Successfully", Toast.LENGTH_LONG).show();
                         else
