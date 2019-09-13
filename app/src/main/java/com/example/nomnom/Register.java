@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.nomnom.Database.DatabaseHelper;
@@ -36,14 +35,14 @@ public class Register extends AppCompatActivity {
         RegisterNow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String username = Username.getText().toString().trim();
-                String email = Email.getText().toString().trim();
-                String password = Password.getText().toString().trim();
-                String confirmpassword = ConfirmPassword.getText().toString().trim();
+                String username = Username.getText().toString();
+                String email = Email.getText().toString();
+                String password = Password.getText().toString();
+                String confirmpassword = ConfirmPassword.getText().toString();
 
                 if (password.equals(confirmpassword)) {
-                    long val = db.addUser(username, email, password);
-                    if (val > 0) {
+                    boolean val = db.addUser(username, email, password);
+                    if (val == true) {
                         Toast.makeText(Register.this, "Welcome to the Nom Nom Family", Toast.LENGTH_SHORT).show();
                         Intent moveToLogin = new Intent(Register.this, LoginActivity.class);
                         startActivity(moveToLogin);
