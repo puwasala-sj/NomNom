@@ -26,16 +26,8 @@ public class LoginActivity extends AppCompatActivity {
 
         db = new DatabaseHelper(this);
         Username = (EditText)findViewById(R.id.username);
-        Password = (EditText)findViewById(R.id.email);
+        Password = (EditText)findViewById(R.id.password);
         Login = (Button) findViewById(R.id.btn1);
-        Notregister = (TextView)findViewById(R.id.text2);
-        Notregister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent register = new Intent(LoginActivity.this,Register.class);
-                startActivity(register);
-            }
-        });
 
         Login.setOnClickListener(new View.OnClickListener(){
             @Override

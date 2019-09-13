@@ -8,8 +8,8 @@ import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
-    Button login;
-    Button register;
+    private Button login;
+    private Button register;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,24 +20,18 @@ public class MainActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openLoginActivity();
+                Intent intent = new Intent(MainActivity.this,LoginActivity.class);
+                startActivity(intent);
             }
         });
+
         register = (Button) findViewById(R.id.btn2);
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openRegisterActivity();
+                Intent intent = new Intent(MainActivity.this, Register.class);
+                startActivity(intent);
             }
         });
-    }
-    public void openLoginActivity(){
-        Intent intent = new Intent(this,LoginActivity.class);
-        startActivity(intent);
-    }
-
-    public void openRegisterActivity(){
-        Intent intent = new Intent(this, Register.class);
-        startActivity(intent);
     }
 }
