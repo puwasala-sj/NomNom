@@ -2,6 +2,8 @@ package com.example.nomnom.Database;
 
 import android.provider.BaseColumns;
 
+import java.sql.Blob;
+
 public final class UserMaster {
     private UserMaster(){}
 
@@ -21,13 +23,6 @@ public final class UserMaster {
         public static final String COLUMN_NAME2 = "username";
         public static final String COLUMN_NAME3 = "email";
         public static final String COLUMN_NAME4 = "password";
-    }
-
-    //Menu Table
-    protected static class Menu implements BaseColumns{
-        public static final String TABLE_NAME = "Menu";
-        public static final String COLUMN_NAME1 = "";
-        public static final String COLUMN_NAME2 = "";
     }
 
     //Feedback Table
