@@ -2,20 +2,17 @@
     <string name="app_name">Nom Nom</string>
     <string name="btn1">Login</string>
     <string name="btn2">Sign Up</string>
-    <string name="btn3">Menu</string>
-    <string name="btn4">Send</string>
-    <string name="btn5">Feedback</string>
-    <string name="btn6">Register Now</string>
     <string name="textView1">Login</string>
     <string name="textView2">Welcome to Nom Nom</string>
     <string name="textView3">Life is like a restaurant; you can have anything you want as long as you are willing to pay the price.</string>
+    <string name="btn3">Menu</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
     <string name="textView4">Not Registered?</string>
     <string name="textView5">Register</string>
     <string name="textView6">Feedback</string>
-    <string name="textView7">When you are here, you are family..</string>
-    <string name="username">Username</string>
-    <string name="email">Email</string>
-    <string name="password">Password</string>
+    <string name="btn4">Send</string>
+    <string name="btn5">Feedback</string>
     <string name="placeOrder">Place Your Order</string>
     <string name="order">Order Now</string>
     <string name="name">Name:</string>
@@ -30,7 +27,9 @@
     <string name="buttonDelete">Delete Order</string>
     <string name="orderId">Order ID</string>
     <string name="editId">EditId</string>
-    <string name="confirm_password">Confirm password</string>
-
+    <string name="textView6">When you are here, you are family..</string>
+    <string name="email">E-mail</string>
+    <string name="textView7">Confirm Password</string>
+    <string name="btn4">Register Now</string>
 
 </resources>
