@@ -18,9 +18,6 @@ public class Register extends AppCompatActivity {
     private EditText Password;
     private EditText ConfirmPassword;
     private Button RegisterNow;
-    private TextView Login;
-
-
     DatabaseHelper db;
 
 
@@ -35,17 +32,8 @@ public class Register extends AppCompatActivity {
         Password = (EditText)findViewById(R.id.password);
         ConfirmPassword = (EditText) findViewById(R.id.confirmpassword);
         RegisterNow = (Button) findViewById(R.id.btn6);
-        Login = (TextView)findViewById(R.id.btn1);
-        Login = setOnClickListner( new View.OnClickListener() {
-                                       @Override
-                                       public void onClick(View view) {
-                                           Intent LoginIntent = new Intent(Register.this, LoginActivity.class);
-                                           startActivity(LoginIntent);
-                                       }
-                                   });
 
-
-        Register.setOnClickListner(new View.OnClickListener() {
+        RegisterNow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String username = Username.getText().toString().trim();
@@ -54,7 +42,7 @@ public class Register extends AppCompatActivity {
                 String confirmpassword = ConfirmPassword.getText().toString().trim();
 
                 if (password.equals(confirmpassword)) {
-                    long val = db.addUser(username, password);
+                    long val = db.addUser(username, email, password);
                     if (val > 0) {
                         Toast.makeText(Register.this, "Welcome to the Nom Nom Family", Toast.LENGTH_SHORT).show();
                         Intent moveToLogin = new Intent(Register.this, LoginActivity.class);
@@ -62,14 +50,12 @@ public class Register extends AppCompatActivity {
                     } else {
                         Toast.makeText(Register.this, "Oops Registration error", Toast.LENGTH_SHORT).show();
                     }
-                else{
-                        Toast.makeText(Register.this, "Password is not matching", Toast.LENGTH_SHORT).show();
-                    }
+                } else {
+                    Toast.makeText(Register.this, "Password is not matching", Toast.LENGTH_SHORT).show();
                 }
             }
 
-
-        }
+        });
 
     }
 }

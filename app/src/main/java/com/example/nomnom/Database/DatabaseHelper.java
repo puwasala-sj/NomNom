@@ -34,7 +34,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         //Create Table Register
         String SQL_CREATE_ENTRIES_REGISTER =
                 "CREATE TABLE " + TABLE_NAME + " (" +
-                        UserMaster.Register._ID + " INTEGER PRIMARY KEY," +
+                        UserMaster.Register._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                         UserMaster.Register.COLUMN_NAME2 + " TEXT," +
                         UserMaster.Register.COLUMN_NAME3 + " TEXT," +
                         UserMaster.Register.COLUMN_NAME4 + " TEXT)";
@@ -44,7 +44,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         //Create Table FeedBack
         String SQL_CREATE_ENTRIES_FEEDBACK =
                 "CREATE TABLE " + UserMaster.Feedback.TABLE_NAME + " (" +
-                        UserMaster.Feedback._ID + " INTEGER PRIMARY KEY," +
+                        UserMaster.Feedback._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                         UserMaster.Feedback.COLUMN_NAME1 + " TEXT," +
                         UserMaster.Feedback.COLUMN_NAME2 + " TEXT)";
 
@@ -125,7 +125,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = getReadableDatabase();
         String selection = UserMaster.Register.COLUMN_NAME2 + "=?" + "and" + UserMaster.Register.COLUMN_NAME4 + "m?";
         String[] selectionArgs = {username, password};
-        Cursor cursor = db.query  (UserMaster.Register.TABLE_NAME, columns, selection, selectionArgs, null, null, null);
+        Cursor cursor = db.query(UserMaster.Register.TABLE_NAME, columns, selection, selectionArgs, null, null, null);
         int count = cursor.getCount();
         cursor.close();
         db.close();
@@ -134,7 +134,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return true;
         else
             return false;
-
+    }
     //Menu
     public void queryData(String sql){
         SQLiteDatabase database = getWritableDatabase();
@@ -188,8 +188,5 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return false;
         else
             return true;
-    }
-
-
     }
 }

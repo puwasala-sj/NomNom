@@ -45,7 +45,7 @@ public class LoginActivity extends AppCompatActivity {
                 Boolean result = db.checkUser(username, password);
                 if (result ==  true)
                 {
-                    Toast.makeText(LoginActivity.this, "Successfully Logged In",Toast.LENGTH_SHORT) .show();
+                    Toast.makeText(LoginActivity.this, "Welcome",Toast.LENGTH_SHORT) .show();
                 }
                 else
                 {
