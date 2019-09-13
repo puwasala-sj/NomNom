@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.nomnom.Database.DatabaseHelper;
 
@@ -27,8 +26,8 @@ public class LoginActivity extends AppCompatActivity {
         db = new DatabaseHelper(this);
         Username = (EditText)findViewById(R.id.username);
         Password = (EditText)findViewById(R.id.password);
-        Login = (Button) findViewById(R.id.btn1);
-        Notregister = (TextView)findViewById(R.id.textView5);
+        Login = (Button) findViewById(R.id.btn6);
+        Notregister = (TextView)findViewById(R.id.textView1);
         Notregister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
