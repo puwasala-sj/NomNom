@@ -158,14 +158,22 @@ public class FoodList extends AppCompatActivity {
         });
     }
 
-    private void showDialogDelete(int idFood){
-        AlertDialog.Builder dialogDelete = new AlertDialog.Builder(FoodList.this);
+    private void showDialogDelete(final int idFood){
+        final AlertDialog.Builder dialogDelete = new AlertDialog.Builder(FoodList.this);
 
         dialogDelete.setTitle("Warning!!!");
         dialogDelete.setMessage("Are you sure you want this to delete?");
         dialogDelete.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                try{
+                    Menu.db.deleteData(idFood);
+                    Toast.makeText(getApplicationContext(), "Deleted Successfully!!!", Toast.LENGTH_SHORT).show();
+
+                } catch (Exception e){
+                    Log.e("error",e.getMessage());
+                }
+                updateFoodList();
 
             }
         });

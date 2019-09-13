@@ -125,7 +125,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = getReadableDatabase();
         String selection = UserMaster.Register.COLUMN_NAME2 + "=?" + "and" + UserMaster.Register.COLUMN_NAME4 + "m?";
         String[] selectionArgs = {username, password};
-        Cursor cursor = db.query  (UserMaster.Register.TABLE_NAME, columns, selection, selectionArgs, null, null, null);
+        Cursor cursor = db.query(UserMaster.Register.TABLE_NAME, columns, selection, selectionArgs, null, null, null);
         int count = cursor.getCount();
         cursor.close();
         db.close();
@@ -134,7 +134,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return true;
         else
             return false;
-
+    }
     //Hansini
     public void queryData(String sql){
         SQLiteDatabase database = getWritableDatabase();
@@ -170,6 +170,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         database.close();
     }
 
+    public void deleteData(int id){
+        SQLiteDatabase database = getWritableDatabase();
+
+        String sql = "DELETE FROM FOOD WHERE id = ?";
+        SQLiteStatement statement = database.compileStatement(sql);
+        statement.clearBindings();
+        statement.bindDouble(1,(double)id);
+
+        statement.execute();
+        database.close();
+
+    }
+
     public Cursor getData (String sql){
         SQLiteDatabase database = getReadableDatabase();
         return database.rawQuery(sql,null);
@@ -179,4 +192,4 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
     }
-}
+
