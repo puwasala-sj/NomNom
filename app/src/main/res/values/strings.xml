@@ -24,6 +24,4 @@
     <string name="buttonDelete">Delete Order</string>
     <string name="orderId">Order ID</string>
     <string name="editId">EditId</string>
-    <string name="contactNum">Contact Number :</string>
-    <string name="contact">Contact Number</string>
 </resources>

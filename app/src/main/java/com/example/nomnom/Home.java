@@ -10,6 +10,7 @@ import android.widget.Button;
 
 public class Home extends AppCompatActivity {
     private Button menu;
+    private Button feedback;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,10 +24,22 @@ public class Home extends AppCompatActivity {
                 openMenuActivity();
             }
         });
+        feedback = (Button) findViewById(R.id.btn4);
+        feedback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openFeedbackActivity();
+            }
+        });
     }
 
     public void openMenuActivity(){
         Intent intent = new Intent(this, Menu.class);
+        startActivity(intent);
+    }
+
+    public void openFeedbackActivity(){
+        Intent intent = new Intent(this, FeedBack.class);
         startActivity(intent);
     }
 }
