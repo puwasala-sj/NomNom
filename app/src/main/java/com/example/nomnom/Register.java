@@ -28,9 +28,9 @@ public class Register extends AppCompatActivity {
         db = new DatabaseHelper(this);
         Username = (EditText)findViewById(R.id.username);
         Email = (EditText) findViewById(R.id.email);
-        Password = (EditText)findViewById(R.id.password);
+        Password = (EditText)findViewById(R.id.email);
         ConfirmPassword = (EditText) findViewById(R.id.confirmPassword);
-        RegisterNow = (Button) findViewById(R.id.register);
+        RegisterNow = (Button) findViewById(R.id.login);
 
         RegisterNow.setOnClickListener(new View.OnClickListener() {
             @Override
