@@ -8,7 +8,7 @@
     tools:context=".Register">
 
     <TextView
-        android:id="@+id/login"
+        android:id="@+id/register"
         android:layout_width="230dp"
         android:layout_height="62dp"
         android:layout_marginStart="8dp"
@@ -24,80 +24,6 @@
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/email"
-        android:layout_width="292dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:background="#86A29E9C"
-        android:ems="10"
-        android:fontFamily="sans-serif-light"
-        android:hint="@string/email"
-        android:inputType="textPersonName"
-        android:textAlignment="textStart"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="3689dp" />
-
-    <EditText
-        android:id="@+id/password"
-        android:layout_width="292dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="8dp"
-        android:background="#86A29E9C"
-        android:ems="10"
-        android:fontFamily="sans-serif-light"
-        android:hint="@string/password"
-        android:inputType="textPersonName"
-        android:textAlignment="textStart"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/email" />
-
-    <EditText
-        android:id="@+id/confirmPassword"
-        android:layout_width="292dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="24dp"
-        android:background="#86A29E9C"
-        android:ems="10"
-        android:fontFamily="sans-serif-light"
-        android:hint="@string/confirmPassword"
-        android:inputType="textPersonName"
-        android:textAlignment="textStart"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password" />
-
-    <Button
-        android:id="@+id/login"
-        android:layout_width="191dp"
-        android:layout_height="72dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="70dp"
-        android:background="#BDB7B7"
-        android:text="@string/registerNow"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/confirmPassword"
-        app:layout_constraintVertical_bias="0.112" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
