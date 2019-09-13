@@ -8,7 +8,15 @@
     <string name="btn5">Send</string>
     <string name="btn6">Register Now</string>
     <string name="btn7">Order Now</string>
+    <string name="btnChoose">Choose Image</string>
+    <string name="btnAdd">ADD</string>
+    <string name="btnList">Food List</string>
+    <string name="btnUpdate">UPDATE</string>
     //Text
+    <string name="edtName">Name</string>
+    <string name="edtPrice">Price</string>
+    <string name="txtName">Food Name</string>
+    <string name="txtPrice">Price</string>
     <string name="textView1">Login</string>
     <string name="textView2">Welcome to Nom Nom</string>
     <string name="textView3">Life is like a restaurant; you can have anything you want as long as you are willing to pay the price.</string>
