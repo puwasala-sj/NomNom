@@ -41,7 +41,7 @@ public class Register extends AppCompatActivity {
                 String confirmpassword = ConfirmPassword.getText().toString();
 
                 if (password.equals(confirmpassword)) {
-                    boolean val = db.addUser(username, email, password);
+                    boolean val = db.addUser(username, email, password );
                     if (val == true) {
                         Toast.makeText(Register.this, "Welcome to the Nom Nom Family", Toast.LENGTH_SHORT).show();
                         Intent moveToLogin = new Intent(Register.this, LoginActivity.class);
