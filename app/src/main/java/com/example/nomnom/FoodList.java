@@ -26,6 +26,8 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
+import com.example.nomnom.Database.DatabaseHelper;
+
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -34,6 +36,7 @@ public class FoodList extends AppCompatActivity {
     GridView gridView;
     ArrayList<Food> list;
     FoodListAdapter adapter = null;
+    DatabaseHelper db;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -46,7 +49,7 @@ public class FoodList extends AppCompatActivity {
         gridView.setAdapter(adapter);
 
         //get all data from sqlite
-        Cursor cursor = Menu.sqLiteHelper.getData("SELECT * FROM FOOD");
+        Cursor cursor = Menu.db.getData("SELECT * FROM FOOD");
         list.clear();
         while (cursor.moveToNext()) {
             int id = cursor.getInt(0);
@@ -71,7 +74,7 @@ public class FoodList extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int item) {
                         if (item == 0) {
                             //update
-                            Cursor c = Menu.sqLiteHelper.getData("SELECT id FROM FOOD");
+                            Cursor c = Menu.db.getData("SELECT id FROM FOOD");
                             ArrayList<Integer> arrID = new ArrayList<Integer>();
                             while(c.moveToNext()) {
                                 arrID.add(c.getInt(0));
@@ -82,7 +85,7 @@ public class FoodList extends AppCompatActivity {
 
                         } else {
                             //delete
-                            Toast.makeText(getApplicationContext(), "Delete..", Toast.LENGTH_SHORT).show();
+
                         }
 
 
@@ -129,7 +132,7 @@ public class FoodList extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try{
-                    Menu.sqLiteHelper.updateData(
+                    Menu.db.updateData(
                             edtName.getText().toString().trim(),
                             edtPrice.getText().toString().trim(),
                             Menu.imageViewToByte(imageViewFood),
@@ -149,9 +152,30 @@ public class FoodList extends AppCompatActivity {
         });
     }
 
+    private void showDialogDelete(int idFood){
+        AlertDialog.Builder dialogDelete = new AlertDialog.Builder(FoodList.this);
+
+        dialogDelete.setTitle("Warning!!!");
+        dialogDelete.setMessage("Are you sure you want this to delete?");
+        dialogDelete.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+
+        dialogDelete.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+
+            }
+        });
+    }
+
     private void updateFoodList(){
         //get all data from sqlite
-        Cursor cursor = Menu.sqLiteHelper.getData("SELECT * FROM FOOD");
+        Cursor cursor = Menu.db.getData("SELECT * FROM FOOD");
         list.clear();
         while (cursor.moveToNext()) {
             int id = cursor.getInt(0);

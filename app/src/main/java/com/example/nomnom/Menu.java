@@ -19,6 +19,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.nomnom.Database.DatabaseHelper;
+
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -31,7 +33,7 @@ public class Menu extends AppCompatActivity {
 
     final int REQUEST_CODE_GALLERY = 999;
 
-    public static SQLiteHelper sqLiteHelper;
+    public static DatabaseHelper db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,10 +41,7 @@ public class Menu extends AppCompatActivity {
         setContentView(R.layout.activity_menu);
 
         init();
-
-        sqLiteHelper = new SQLiteHelper(this,"FoodDB.sqlite",null,1);
-
-        sqLiteHelper.queryData("CREATE TABLE IF NOT EXISTS FOOD(Id INTEGER PRIMARY KEY AUTOINCREMENT, name VARCHAR, price VARCHAR, image BLOG");
+        db.queryData("CREATE TABLE IF NOT EXISTS FOOD(Id INTEGER PRIMARY KEY AUTOINCREMENT, name VARCHAR, price VARCHAR, image BLOG");
 
         btnChoose.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,7 +58,7 @@ public class Menu extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 try{
-                    sqLiteHelper.insertData(
+                    db.insertData(
                             edtName.getText().toString().trim(),
                             edtPrice.getText().toString().trim(),
                             imageViewToByte(imageView)
