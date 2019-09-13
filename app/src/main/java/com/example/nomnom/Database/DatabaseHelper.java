@@ -105,7 +105,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return db.delete(UserMaster.Orders.TABLE_NAME, "orderID = ?", new String[] {orderID});
     }
 
-    DatabaseHelper dbHelper = new DatabaseHelper(getContext());
+    DatabaseHelper dbHelper = new DatabaseHelper(getContext()) ;
     //Add user
     public boolean addUser(String username, String email,String password) {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
@@ -131,7 +131,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         int count = cursor.getCount();
         cursor.close();
         db.close();
-        
+
         if (count > 0)
             return true;
         else
