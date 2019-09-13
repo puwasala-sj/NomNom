@@ -27,8 +27,8 @@ public class LoginActivity extends AppCompatActivity {
         db = new DatabaseHelper(this);
         Username = (EditText)findViewById(R.id.username);
         Password = (EditText)findViewById(R.id.password);
-        Login = (Button) findViewById(R.id.btn6);
-        Notregister = (TextView)findViewById(R.id.textView5);
+        Login = (Button) findViewById(R.id.registerNow);
+        Notregister = (TextView)findViewById(R.id.text2);
         Notregister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -40,8 +40,8 @@ public class LoginActivity extends AppCompatActivity {
         Login.setOnClickListener(new View.OnClickListener(){
             @Override
             public void  onClick(View view){
-                String username = Username.getText().toString().trim();
-                String password = Password.getText().toString().trim();
+                String username = Username.getText().toString();
+                String password = Password.getText().toString();
                 Boolean result = db.checkUser(username, password);
                 if (result ==  true)
                 {

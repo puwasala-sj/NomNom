@@ -9,22 +9,22 @@ import android.view.View;
 import android.widget.Button;
 
 public class Home extends AppCompatActivity {
-    private Button menu;
-    private Button feedback;
+    Button menu;
+    Button feedback;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        menu = (Button) findViewById(R.id.btn3);
+        menu = (Button) findViewById(R.id.menu);
         menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 openMenuActivity();
             }
         });
-        feedback = (Button) findViewById(R.id.btn4);
+        feedback = (Button) findViewById(R.id.feedback);
         feedback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

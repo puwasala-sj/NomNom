@@ -23,6 +23,6 @@ public class FeedBack extends AppCompatActivity {
         db = new DatabaseHelper(this);
         Topic = (EditText)findViewById(R.id.topic);
         Description = (EditText)findViewById(R.id.description);
-        Send = (Button) findViewById(R.id.btn4);
+        Send = (Button) findViewById(R.id.send);
     }
 }

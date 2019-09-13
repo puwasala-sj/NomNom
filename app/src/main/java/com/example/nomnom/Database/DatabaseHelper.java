@@ -105,10 +105,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return db.delete(UserMaster.Orders.TABLE_NAME, "orderID = ?", new String[] {orderID});
     }
 
-    DatabaseHelper dbHelper = new DatabaseHelper(getContext()) ;
     //Add user
     public boolean addUser(String username, String email,String password) {
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
         values.put(UserMaster.Register.COLUMN_NAME2, username);

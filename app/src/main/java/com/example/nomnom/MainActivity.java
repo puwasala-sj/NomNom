@@ -8,22 +8,22 @@ import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
-    private Button login;
-    private Button register;
+    Button login;
+    Button register;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        login = (Button) findViewById(R.id.btn6);
+        login = (Button) findViewById(R.id.registerNow);
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 openLoginActivity();
             }
         });
-        register = (Button) findViewById(R.id.btn2);
+        register = (Button) findViewById(R.id.signup);
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
     public void openLoginActivity(){
-        Intent intent = new Intent(this, Home.class);
+        Intent intent = new Intent(this,LoginActivity.class);
         startActivity(intent);
     }
 

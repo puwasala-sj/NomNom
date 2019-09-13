@@ -1,12 +1,12 @@
 <resources>
     <string name="app_name">Nom Nom</string>
-    //Buttons
     <string name="login">Login</string>
     <string name="signup">Sign Up</string>
     <string name="menu">Menu</string>
     <string name="feedback">Feedback</string>
     <string name="send">Send</string>
-    <string name="register">Register Now</string>
+    <string name="registerNow">Register Now</string>
+    <string name="register">Register</string>
     <string name="order">Order Now</string>
     <string name="btnChoose">Choose Image</string>
     <string name="btnAdd">ADD</string>
