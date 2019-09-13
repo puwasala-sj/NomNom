@@ -135,7 +135,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         else
             return false;
 
-    //Hansini
+    //Menu
     public void queryData(String sql){
         SQLiteDatabase database = getWritableDatabase();
         database.execSQL(sql);
@@ -175,7 +175,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return database.rawQuery(sql,null);
     }
 
+    //Feedback
+    public boolean addFeedback(String topic, String description) {
+        SQLiteDatabase db = this.getWritableDatabase();
 
+        ContentValues values = new ContentValues();
+        values.put(UserMaster.Feedback.COLUMN_NAME1, topic);
+        values.put(UserMaster.Feedback.COLUMN_NAME2, description);
+
+        long result = db.insert(UserMaster.Feedback.TABLE_NAME, null, values);
+        if (result == -1)
+            return false;
+        else
+            return true;
+    }
 
 
     }
