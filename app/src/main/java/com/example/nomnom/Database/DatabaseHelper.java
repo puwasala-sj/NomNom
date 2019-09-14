@@ -141,7 +141,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return false;
     }
 
-    //interface which provides random read write access to result
+    //show database register table
+    public Cursor getAllUser() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res = db.rawQuery("select * from "+ TABLE_NAME_REGISTER,null);
+        return res;
+    }
+    //show database feedback table
+    public Cursor getAllfeedback() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res = db.rawQuery("select * from "+ TABLE_NAME_FEEDBACK,null);
+        return res;
+    }
+
+    //show database order table
     public Cursor getAllData() {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor res = db.rawQuery("select * from "+ TABLE_NAME_ORDER,null);

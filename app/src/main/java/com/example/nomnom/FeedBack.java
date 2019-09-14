@@ -16,6 +16,7 @@ public class FeedBack extends AppCompatActivity {
     EditText Topic;
     EditText Description;
     Button Send;
+    Button viewfeed;
     DatabaseHelper db;
 
     @Override
@@ -27,6 +28,14 @@ public class FeedBack extends AppCompatActivity {
         Topic = (EditText)findViewById(R.id.topic);
         Description = (EditText)findViewById(R.id.description);
         Send = (Button) findViewById(R.id.send);
+        viewfeed = (Button) findViewById(R.id.view);
+        viewfeed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent feed = new Intent(FeedBack.this, FeedbackList.class);
+                startActivity(feed);
+            }
+        });
         AddFeed();
     }
     public void AddFeed(){
@@ -36,12 +45,13 @@ public class FeedBack extends AppCompatActivity {
                boolean result = db.addFeedback(Topic.getText().toString(),Description.getText().toString());
                 if (result == true) {
                     Toast.makeText(FeedBack.this, "Thank you", Toast.LENGTH_SHORT).show();
-                    /*Intent moveToLogin = new Intent(Register.this, LoginActivity.class);
-                    startActivity(moveToLogin);*/
+                    Intent feed = new Intent(FeedBack.this, FeedbackList.class);
+                    startActivity(feed);
                 } else {
                     Toast.makeText(FeedBack.this, "Sorry something went wrong", Toast.LENGTH_SHORT).show();
                 }
             }
         });
     }
+
 }
