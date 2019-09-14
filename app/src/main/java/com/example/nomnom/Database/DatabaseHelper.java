@@ -181,16 +181,28 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     //Update data in register table
-    public boolean updateUser(String id, String name, String address,String contactNo, String quantity) {
+    public boolean updateUser(String id, String username, String email,String password) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(COLUMN_NAME, name);
-        values.put(COLUMN_NAME_ADDRESS, address);
-        values.put(COLUMN_NAME_CONTACT, contactNo);
-        values.put(COLUMN_NAME_QUANTITY, quantity);
+        values.put(COLUMN_NAME_USERNAME, username);
+        values.put(COLUMN_NAME_EMAIL, email);
+        values.put(COLUMN_NAME_PASSWORD, password);
 
-        db.update(TABLE_NAME_ORDER, values, "orderID = ?", new String[] {id});
+        db.update(TABLE_NAME_REGISTER, values, "id = ?", new String[] {id});
+        return true;
+    }
+
+    //Update data in feedback table
+    public boolean (String id, String username, String email,String password) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_NAME_USERNAME, username);
+        values.put(COLUMN_NAME_EMAIL, email);
+        values.put(COLUMN_NAME_PASSWORD, password);
+
+        db.update(TABLE_NAME_REGISTER, values, "id = ?", new String[] {id});
         return true;
     }
 

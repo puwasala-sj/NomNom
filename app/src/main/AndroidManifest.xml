@@ -10,7 +10,8 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".FeedbackList"></activity>
+        <activity android:name=".RegisterList"></activity>
+        <activity android:name=".FeedbackList" />
         <activity android:name=".Register" />
         <activity android:name=".Home" />
 
