@@ -11,10 +11,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Menu"></activity>
         <activity android:name=".Register" />
+        <activity android:name=".Home"/>
+        <activity android:name=".Menu"/>
+        <activity android:name=".FeedBack"/>
         <activity android:name=".LoginActivity" />
         <activity android:name=".MainActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,7 +27,7 @@
 
         <activity android:name=".FoodList"
             android:label="Food List"
-            android:parentActivityName=".Menu" />
+            android:parentActivityName=".Menu"/>
 
     </application>
 
