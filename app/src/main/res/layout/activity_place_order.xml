@@ -25,27 +25,11 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editText_Id"
-        android:layout_width="300dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="8dp"
-        android:background="#7EFFFFFF"
-        android:fontFamily="serif"
-        android:hint="@string/orderId"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/placeOrder" />
-
-    <EditText
         android:id="@+id/editText_name"
         android:layout_width="300dp"
         android:layout_height="55dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"
         android:background="#7EFFFFFF"
         android:fontFamily="serif"
@@ -53,7 +37,7 @@
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText_Id" />
+        app:layout_constraintTop_toBottomOf="@+id/placeOrder" />
 
     <EditText
         android:id="@+id/editText_address"

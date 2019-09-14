@@ -9,10 +9,6 @@
     <string name="send">Send</string>
     <string name="registerNow">Register Now</string>
     <string name="order">Order Now</string>
-    <string name="btnChoose">Choose Image</string>
-    <string name="btnAdd">ADD</string>
-    <string name="btnList">Food List</string>
-    <string name="btnUpdate">UPDATE</string>
     <string name="name">Name</string>
     <string name="price">Price</string>
     <string name="foodName">Food Name</string>

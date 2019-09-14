@@ -27,30 +27,29 @@ public class PlaceOrder extends AppCompatActivity {
         editQuantity = (EditText) findViewById(R.id.editText_quantity);
         btnAddData = (Button) findViewById(R.id.order);
         AddData();
-
     }
 
     public void AddData() {
-        btnAddData.setOnClickListener(
-                new View.OnClickListener() {
-
-
-                    String name = editName.getText().toString();
-                    String address = editAddress.getText().toString();
-                    String contact = editContactNo.getText().toString();
-                    String quantity = editQuantity.getText().toString();
-
+        btnAddData.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View view) {
+                        String name = editName.getText().toString();
+                        String address = editAddress.getText().toString();
+                        String contact = editContactNo.getText().toString();
+                        String quantity = editQuantity.getText().toString();
+
                         if (name.isEmpty() || address.isEmpty() || contact.isEmpty() || quantity.isEmpty()) {
                             Toast.makeText(PlaceOrder.this, "Fill all details", Toast.LENGTH_SHORT).show();
-                        } else {
+                        } else if(!name.matches("^[a-zA-Z]+$")) {
+                            Toast.makeText(PlaceOrder.this, "Enter letters only", Toast.LENGTH_SHORT).show();
+                        } else if(!contact.matches("^[0-9]+$")) {
+                            Toast.makeText(PlaceOrder.this, "Enter  only", Toast.LENGTH_SHORT).show();
+                        }
 
                             boolean isInserted = myDb.addInfoOrder(name, address, contact, quantity);
                             if (isInserted = true) {
-                                Toast.makeText(PlaceOrder.this, "Data Inserted Successfully", Toast.LENGTH_LONG).show();
+                                Toast.makeText(PlaceOrder.this, "Order placed", Toast.LENGTH_LONG).show();
                             } else {
-
-                                Toast.makeText(PlaceOrder.this, "Data Not Inserted", Toast.LENGTH_LONG).show();
+                                Toast.makeText(PlaceOrder.this, "Error", Toast.LENGTH_LONG).show();
                             }
                         }
                     }

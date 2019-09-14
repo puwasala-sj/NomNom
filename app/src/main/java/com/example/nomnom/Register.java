@@ -17,15 +17,6 @@ import java.util.regex.Pattern;
 
 public class Register extends AppCompatActivity {
 
-
-    private static final Pattern PASSWORD_PATTERN =
-            Pattern.compile("^" +
-                    "(?=.*[0-9])"+          //at least one digit
-                    "(?=.*[a-zA-Z])"+       //enter letters
-                    "(?=\\s+$)"+            //no white spaces
-                    ".{3,}" +             //at least three characters
-                    "$");
-
     EditText Username;
     EditText Email;
     EditText Password;
@@ -63,8 +54,6 @@ public class Register extends AppCompatActivity {
                         Toast.makeText(Register.this, "Fill all details", Toast.LENGTH_SHORT).show();
                     }else if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
                         Toast.makeText(Register.this, "Invalid email address", Toast.LENGTH_SHORT).show();
-                    }else if(!PASSWORD_PATTERN.matcher(password).matches()){
-                        Toast.makeText(Register.this, "Password should include 3 characters and numbers,", Toast.LENGTH_SHORT).show();
                     }else if (password.equals(confirmpassword)) {
                         boolean val = db.addUser(username, email, password);
                         if (val == true) {

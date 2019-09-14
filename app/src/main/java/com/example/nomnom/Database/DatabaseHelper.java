@@ -61,7 +61,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         //Create Table Order
         String SQL_CREATE_ENTRIES_ORDER =
                 "CREATE TABLE " + TABLE_NAME_ORDER + " (" +
-                        COLUMN_NAME_OID + " INTEGER PRIMARY KEY," +
+                        COLUMN_NAME_OID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                         COLUMN_NAME + " TEXT," +
                         COLUMN_NAME_ADDRESS + " TEXT," +
                         COLUMN_NAME_CONTACT + " TEXT," +
@@ -250,57 +250,4 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return false;
         }
     }
-
-    //Menu
-    public void queryData(String sql){
-        SQLiteDatabase database = getWritableDatabase();
-        database.execSQL(sql);
-    }
-
-    public void insertData(String name, String price, byte[] image){
-        SQLiteDatabase database = getWritableDatabase();
-        String sql = "INSERT INTO FOOD VALUES (NULL, ?, ?, ?)";
-
-        SQLiteStatement statement = database.compileStatement(sql);
-        statement.clearBindings();
-
-        statement.bindString(1, name);
-        statement.bindString(2, price);
-        statement.bindBlob(3, image);
-
-        statement.executeInsert();
-    }
-
-    public void updateData(String name, String price, byte[] image, int id){
-        SQLiteDatabase database = getWritableDatabase();
-
-        String sql = "UPDATE FOOD SET name = ?, price = ?, image = ? WHERE id = ?";
-        SQLiteStatement statement = database.compileStatement(sql);
-
-        statement.bindString(1,name);
-        statement.bindString(2,price);
-        statement.bindBlob(3,image);
-        statement.bindDouble(4,(double)id);
-
-        statement.execute();
-        database.close();
-    }
-    public void deleteData(int id){
-        SQLiteDatabase database = getWritableDatabase();
-
-        String sql = "DELETE FROM FOOD WHERE id = ?";
-        SQLiteStatement statement = database.compileStatement(sql);
-        statement.clearBindings();
-        statement.bindDouble(1,(double)id);
-
-        statement.execute();
-        database.close();
-
-    }
-
-    public Cursor getData (String sql){
-        SQLiteDatabase database = getReadableDatabase();
-        return database.rawQuery(sql,null);
-    }
-
 }

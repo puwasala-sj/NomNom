@@ -34,6 +34,7 @@ public class LoginActivity extends AppCompatActivity {
             public void  onClick(View view){
                 String username = Username.getText().toString();
                 String password = Password.getText().toString();
+
                 Boolean result = db.checkUser(username, password);
                 if (result ==  true)
                 {
