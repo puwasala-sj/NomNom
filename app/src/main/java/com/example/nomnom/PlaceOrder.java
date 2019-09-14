@@ -2,6 +2,7 @@ package com.example.nomnom;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -14,6 +15,7 @@ public class PlaceOrder extends AppCompatActivity {
     DatabaseHelper myDb;
     EditText editName, editAddress,editContactNo, editQuantity;
     Button btnAddData;
+    Button viewOrder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +28,14 @@ public class PlaceOrder extends AppCompatActivity {
         editContactNo = (EditText) findViewById(R.id.editText_contact);
         editQuantity = (EditText) findViewById(R.id.editText_quantity);
         btnAddData = (Button) findViewById(R.id.order);
+        viewOrder =(Button) findViewById(R.id.viewOrder);
+        viewOrder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent feed = new Intent(PlaceOrder.this, EditOrder.class);
+                startActivity(feed);
+            }
+        });
         AddData();
     }
 
@@ -42,9 +52,10 @@ public class PlaceOrder extends AppCompatActivity {
                         } else if(!name.matches("^[a-zA-Z]+$")) {
                             Toast.makeText(PlaceOrder.this, "Enter letters only", Toast.LENGTH_SHORT).show();
                         } else if(!contact.matches("^[0-9]+$")) {
-                            Toast.makeText(PlaceOrder.this, "Enter  only", Toast.LENGTH_SHORT).show();
-                        }
-
+                            Toast.makeText(PlaceOrder.this, "Contact number should be numbers only", Toast.LENGTH_SHORT).show();
+                        }else if(!quantity.matches("^[0-9]+$")) {
+                            Toast.makeText(PlaceOrder.this, "Quantity should be numbers only", Toast.LENGTH_SHORT).show();
+                        }else{
                             boolean isInserted = myDb.addInfoOrder(name, address, contact, quantity);
                             if (isInserted = true) {
                                 Toast.makeText(PlaceOrder.this, "Order placed", Toast.LENGTH_LONG).show();

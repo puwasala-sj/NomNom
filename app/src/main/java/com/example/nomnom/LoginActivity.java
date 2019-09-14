@@ -35,16 +35,17 @@ public class LoginActivity extends AppCompatActivity {
                 String username = Username.getText().toString();
                 String password = Password.getText().toString();
 
-                Boolean result = db.checkUser(username, password);
-                if (result ==  true)
-                {
-                    Toast.makeText(LoginActivity.this, "Welcome",Toast.LENGTH_SHORT) .show();
-                    Intent intent = new Intent(LoginActivity.this, Home.class);
-                    startActivity(intent);
-                }
-                else
-                {
-                    Toast.makeText(LoginActivity.this, "Login Error",Toast.LENGTH_SHORT) .show();
+                if(username.isEmpty()||password.isEmpty()) {
+                    Toast.makeText(LoginActivity.this, "Fill all details", Toast.LENGTH_SHORT).show();
+                }else{
+                    Boolean result = db.checkUser(username, password);
+                    if (result == true) {
+                        Toast.makeText(LoginActivity.this, "Welcome", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(LoginActivity.this, Home.class);
+                        startActivity(intent);
+                    } else {
+                        Toast.makeText(LoginActivity.this, "Login Error", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });

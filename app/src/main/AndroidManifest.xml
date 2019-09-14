@@ -13,6 +13,7 @@
         <activity android:name=".RegisterList"></activity>
         <activity android:name=".FeedbackList" />
         <activity android:name=".Register" />
+        <activity android:name=".EditOrder"/>
         <activity android:name=".Home" />
         <activity android:name=".FeedBack" />
         <activity android:name=".PlaceOrder"/>
