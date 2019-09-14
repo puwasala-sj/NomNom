@@ -125,10 +125,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return true;
     }
 
-    public boolean checkUser  (String  username, String password) {
+    public boolean checkUser(String  username, String password) {
         String[] columns = {COLUMN_NAME_ID };
         SQLiteDatabase db = getReadableDatabase();
-        String selection = COLUMN_NAME_USERNAME + "=?" + "and" + COLUMN_NAME_PASSWORD + "m?";
+        String selection = COLUMN_NAME_USERNAME + "=?" + " and " + COLUMN_NAME_PASSWORD + "=?";
         String[] selectionArgs = {username, password};
         Cursor cursor = db.query(TABLE_NAME_REGISTER, columns, selection, selectionArgs, null, null, null);
         int count = cursor.getCount();
