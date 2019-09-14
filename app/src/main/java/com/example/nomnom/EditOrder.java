@@ -15,7 +15,6 @@ import com.example.nomnom.Database.DatabaseHelper;
 public class EditOrder extends AppCompatActivity {
 
     DatabaseHelper myDb;
-    EditText editText_id;
     EditText editText_name, editText_address,editText_contact, editQuantity;
 
     Button button_View;
@@ -30,7 +29,6 @@ public class EditOrder extends AppCompatActivity {
         button_View = (Button) findViewById(R.id.viewOrder);
         button_Update = (Button) findViewById(R.id.editOrder);
         button_Delete = (Button) findViewById(R.id.deleteOrder);
-        editText_id = (EditText) findViewById(R.id.editText_Id);
         viewAll();
         UpdateData();
         DeleteData();
@@ -78,9 +76,7 @@ public class EditOrder extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        boolean isUpdate = myDb.updateData(editText_id.getText().toString(), (editText_name.getText().toString()),
-                                (editText_name.getText().toString()),(editText_address.getText().toString()),
-                                editQuantity.getText().toString());
+                        boolean isUpdate = myDb.updateOrder(editText_name.getText().toString(),editText_address.getText().toString(),editText_contact.getText().toString(),editQuantity.getText().toString());
                         if (isUpdate == true) {
                             Toast.makeText(EditOrder.this, "Data Updated Successfully", Toast.LENGTH_LONG).show();
                         }
@@ -97,7 +93,7 @@ public class EditOrder extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Integer deletedRows = myDb.deleteData(editText_id.getText().toString());
+                        Integer deletedRows = myDb.deleteOrder(editText_name.getText().toString());
                         if(deletedRows > 0)
                             Toast.makeText(EditOrder.this, "Data Deleted Successfully", Toast.LENGTH_LONG).show();
                         else

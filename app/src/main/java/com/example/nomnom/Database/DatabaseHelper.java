@@ -2,10 +2,12 @@ package com.example.nomnom.Database;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteStatement;
+import android.text.Selection;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "NomNom.db";
@@ -163,25 +165,34 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     //Delete user from register table
-    public Integer deleteUser (String id) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        return db.delete(TABLE_NAME_REGISTER, "id = ?", new String[] {id});
+    public Integer deleteUser (String username) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selection = COLUMN_NAME_USERNAME + "LIKE ?";
+        String[] selectionArgs = {username};
+        int count = db.delete(TABLE_NAME_REGISTER,selection,selectionArgs);
+        return count;
     }
 
     //Delete feedback from feedback table
-    public Integer deleteFeedback (String fID) {
+    public Integer deletefeed (String topic) {
         SQLiteDatabase db = this.getWritableDatabase();
-        return db.delete(TABLE_NAME_FEEDBACK, "fID = ?", new String[] {fID});
+        String selection = COLUMN_NAME_TOPIC + "LIKE ?";
+        String[] selectionArgs = {topic};
+        int count = db.delete(TABLE_NAME_FEEDBACK,selection,selectionArgs);
+        return count;
     }
 
     //Delete data from Order table
-    public Integer deleteData (String orderID) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        return db.delete(TABLE_NAME_ORDER, "orderID = ?", new String[] {orderID});
+    public Integer deleteOrder (String name) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selection = COLUMN_NAME + "LIKE ?";
+        String[] selectionArgs = {name};
+        int count = db.delete(TABLE_NAME_FEEDBACK,selection,selectionArgs);
+        return count;
     }
 
     //Update data in register table
-    public boolean updateUser(String id, String username, String email,String password) {
+    public boolean updateUser(String username, String email,String password) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -189,25 +200,38 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(COLUMN_NAME_EMAIL, email);
         values.put(COLUMN_NAME_PASSWORD, password);
 
-        db.update(TABLE_NAME_REGISTER, values, "id = ?", new String[] {id});
-        return true;
+        String selection = COLUMN_NAME_USERNAME + " LIKE ?";
+        String[] selectionArgs = {username};
+        int count = db.update(TABLE_NAME_REGISTER, values,selection,selectionArgs);
+        if(count > 0){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     //Update data in feedback table
-    public boolean (String id, String username, String email,String password) {
+    public boolean updatefeedback(String topic, String description) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(COLUMN_NAME_USERNAME, username);
-        values.put(COLUMN_NAME_EMAIL, email);
-        values.put(COLUMN_NAME_PASSWORD, password);
+        values.put(COLUMN_NAME_TOPIC, topic);
+        values.put(COLUMN_NAME_DESCRIPTION, description);
 
-        db.update(TABLE_NAME_REGISTER, values, "id = ?", new String[] {id});
-        return true;
+        String selection = COLUMN_NAME_TOPIC + " LIKE ?";
+        String[] selectionArgs = {topic};
+        int count = db.update(TABLE_NAME_FEEDBACK, values, selection,selectionArgs);
+        if(count > 0){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     //Update data in Order table
-    public boolean updateData(String id, String name, String address,String contactNo, String quantity) {
+    public boolean updateOrder(String name, String address, String contactNo, String quantity) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -216,8 +240,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(COLUMN_NAME_CONTACT, contactNo);
         values.put(COLUMN_NAME_QUANTITY, quantity);
 
-        db.update(TABLE_NAME_ORDER, values, "orderID = ?", new String[] {id});
-        return true;
+        String selection = COLUMN_NAME + " LIKE ?";
+        String[] selectionArgs = {name};
+        int count = db.update(TABLE_NAME_ORDER, values, selection,selectionArgs);
+        if(count > 0){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     //Menu
