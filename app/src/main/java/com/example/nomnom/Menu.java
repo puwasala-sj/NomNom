@@ -116,7 +116,7 @@ public class Menu extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
 
-        if(requestCode == REQUEST_CODE_GALLERY && requestCode == RESULT_OK && data != null){
+        if(requestCode == REQUEST_CODE_GALLERY && resultCode == RESULT_OK && data != null){
             Uri uri = data.getData();
 
             try {
