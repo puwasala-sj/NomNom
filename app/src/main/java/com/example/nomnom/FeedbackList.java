@@ -14,9 +14,9 @@ import com.example.nomnom.Database.DatabaseHelper;
 
 public class FeedbackList extends AppCompatActivity {
     DatabaseHelper db;
-    EditText topic;
-    EditText description;
-
+    EditText Topic;
+    EditText Description;
+    Button Send;
     Button viewfeed;
     Button deletefeed;
     Button updatefeed;
@@ -26,40 +26,35 @@ public class FeedbackList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feedback_list);
 
+        Topic = (EditText)findViewById(R.id.topic);
+        Description = (EditText)findViewById(R.id.description);
+        Send = (Button) findViewById(R.id.send);
         viewfeed = (Button) findViewById(R.id.view);
         deletefeed = (Button)findViewById(R.id.deletefeed);
-        updatefeed = (Button)findViewById(R.id.updatefeed);
-        deletefeedback();
-        updatefeedback();
-    }
-
-    private void deletefeedback() {
         deletefeed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Integer deletedRows = db.deletefeed(topic.getText().toString());
+                Integer deletedRows = db.deletefeed(Topic.getText().toString());
                 if(deletedRows > 0)
                     Toast.makeText(FeedbackList.this, "Data Deleted Successfully", Toast.LENGTH_LONG).show();
                 else
                     Toast.makeText(FeedbackList.this, "Data Not Deleted", Toast.LENGTH_LONG).show();
             }
         });
-    }
-
-    private void updatefeedback() {
-            updatefeed.setOnClickListener(
-                    new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            boolean isUpdate = db.updatefeedback((topic.getText().toString()),(description.getText().toString()));
-                            if (isUpdate == true) {
-                                Toast.makeText(FeedbackList.this, "Data Updated Successfully", Toast.LENGTH_LONG).show();
-                            }
-                            else{
-                                Toast.makeText(FeedbackList.this, "Data Not Inserted", Toast.LENGTH_LONG).show();
-                            }
+        updatefeed = (Button)findViewById(R.id.updatefeed);
+        updatefeed.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        boolean isUpdate = db.updatefeedback((Topic.getText().toString()),(Description.getText().toString()));
+                        if (isUpdate == true) {
+                            Toast.makeText(FeedbackList.this, "Data Updated Successfully", Toast.LENGTH_LONG).show();
+                        }
+                        else{
+                            Toast.makeText(FeedbackList.this, "Data Not Inserted", Toast.LENGTH_LONG).show();
                         }
                     }
-            );
-        }
+                }
+        );
+    }
 }

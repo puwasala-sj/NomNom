@@ -19,6 +19,7 @@ public class FeedBack extends AppCompatActivity {
     EditText Description;
     Button Send;
     Button viewfeed;
+    Button deletefeed;
     DatabaseHelper db;
 
     @Override
@@ -52,6 +53,18 @@ public class FeedBack extends AppCompatActivity {
                 showMessage("Data", buffer.toString());
             }
         });
+        deletefeed =(Button)findViewById(R.id.deletefeed);
+        deletefeed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                        Integer deletedRows = db.deletefeed(Topic.getText().toString());
+                        if(deletedRows > 0)
+                            Toast.makeText(FeedBack.this, "Data Deleted Successfully", Toast.LENGTH_LONG).show();
+                        else
+                            Toast.makeText(FeedBack.this, "Data Not Deleted", Toast.LENGTH_LONG).show();
+                    }
+
+        });
         AddFeed();
     }
     public void showMessage(String title, String Message) {
@@ -77,8 +90,6 @@ public class FeedBack extends AppCompatActivity {
                     boolean result = db.addFeedback(topic,description);
                     if (result == true) {
                          Toast.makeText(FeedBack.this, "Thank you", Toast.LENGTH_SHORT).show();
-                         Intent feed = new Intent(FeedBack.this, FeedbackList.class);
-                         startActivity(feed);
                      } else {
                         Toast.makeText(FeedBack.this, "Sorry something went wrong", Toast.LENGTH_SHORT).show();
                      }
