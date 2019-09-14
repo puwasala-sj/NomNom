@@ -33,19 +33,27 @@ public class PlaceOrder extends AppCompatActivity {
     public void AddData() {
         btnAddData.setOnClickListener(
                 new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        boolean isInserted = myDb.addInfoOrder(editName.getText().toString(),
-                                editAddress.getText().toString(),
-                                editContactNo.getText().toString(),
-                                editQuantity.getText().toString());
-                        if (isInserted = true)
-                            Toast.makeText(PlaceOrder.this, "Data Inserted Successfully", Toast.LENGTH_LONG).show();
-                        else
-                            Toast.makeText(PlaceOrder.this, "Data Not Inserted", Toast.LENGTH_LONG).show();
 
+
+                    String name = editName.getText().toString();
+                    String address = editAddress.getText().toString();
+                    String contact = editContactNo.getText().toString();
+                    String quantity = editQuantity.getText().toString();
+
+                    public void onClick(View view) {
+                        if (name.isEmpty() || address.isEmpty() || contact.isEmpty() || quantity.isEmpty()) {
+                            Toast.makeText(PlaceOrder.this, "Fill all details", Toast.LENGTH_SHORT).show();
+                        } else {
+
+                            boolean isInserted = myDb.addInfoOrder(name, address, contact, quantity);
+                            if (isInserted = true) {
+                                Toast.makeText(PlaceOrder.this, "Data Inserted Successfully", Toast.LENGTH_LONG).show();
+                            } else {
+
+                                Toast.makeText(PlaceOrder.this, "Data Not Inserted", Toast.LENGTH_LONG).show();
+                            }
+                        }
                     }
-                }
-        );
+                });
     }
 }
