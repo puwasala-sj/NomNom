@@ -21,25 +21,17 @@ public class Home extends AppCompatActivity {
         menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openMenuActivity();
+                Intent intent = new Intent(Home.this, Menu.class);
+                startActivity(intent);
             }
         });
         feedback = (Button) findViewById(R.id.feedback);
         feedback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openFeedbackActivity();
+                Intent intent = new Intent(Home.this, FeedBack.class);
+                startActivity(intent);
             }
         });
-    }
-
-    public void openMenuActivity(){
-        Intent intent = new Intent(this, Menu.class);
-        startActivity(intent);
-    }
-
-    public void openFeedbackActivity(){
-        Intent intent = new Intent(this, FeedBack.class);
-        startActivity(intent);
     }
 }

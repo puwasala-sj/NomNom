@@ -125,10 +125,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return true;
     }
 
-    public boolean checkUser  (String  username, String password) {
+    //Check username and password
+    public boolean checkUser(String  username, String password) {
         String[] columns = {COLUMN_NAME_ID };
         SQLiteDatabase db = getReadableDatabase();
-        String selection = COLUMN_NAME_USERNAME + "=?" + "and" + COLUMN_NAME_PASSWORD + "m?";
+        String selection = COLUMN_NAME_USERNAME + "=?" + " and " + COLUMN_NAME_PASSWORD + "=?";
         String[] selectionArgs = {username, password};
         Cursor cursor = db.query(TABLE_NAME_REGISTER, columns, selection, selectionArgs, null, null, null);
         int count = cursor.getCount();
@@ -141,11 +142,56 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return false;
     }
 
-    //interface which provides random read write access to result
+    //show database register table
+    public Cursor getAllUser() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res = db.rawQuery("select * from "+ TABLE_NAME_REGISTER,null);
+        return res;
+    }
+    //show database feedback table
+    public Cursor getAllfeedback() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res = db.rawQuery("select * from "+ TABLE_NAME_FEEDBACK,null);
+        return res;
+    }
+
+    //show database order table
     public Cursor getAllData() {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor res = db.rawQuery("select * from "+ TABLE_NAME_ORDER,null);
         return res;
+    }
+
+    //Delete user from register table
+    public Integer deleteUser (String id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        return db.delete(TABLE_NAME_REGISTER, "id = ?", new String[] {id});
+    }
+
+    //Delete feedback from feedback table
+    public Integer deleteFeedback (String fID) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        return db.delete(TABLE_NAME_FEEDBACK, "fID = ?", new String[] {fID});
+    }
+
+    //Delete data from Order table
+    public Integer deleteData (String orderID) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        return db.delete(TABLE_NAME_ORDER, "orderID = ?", new String[] {orderID});
+    }
+
+    //Update data in register table
+    public boolean updateUser(String id, String name, String address,String contactNo, String quantity) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_NAME, name);
+        values.put(COLUMN_NAME_ADDRESS, address);
+        values.put(COLUMN_NAME_CONTACT, contactNo);
+        values.put(COLUMN_NAME_QUANTITY, quantity);
+
+        db.update(TABLE_NAME_ORDER, values, "orderID = ?", new String[] {id});
+        return true;
     }
 
     //Update data in Order table
@@ -160,12 +206,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         db.update(TABLE_NAME_ORDER, values, "orderID = ?", new String[] {id});
         return true;
-    }
-
-    //Delete data from Order table
-    public Integer deleteData (String orderID) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        return db.delete(TABLE_NAME_ORDER, "orderID = ?", new String[] {orderID});
     }
 
     //Menu
