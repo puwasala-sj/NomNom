@@ -17,7 +17,6 @@ public class FeedbackList extends AppCompatActivity {
     EditText topic;
     EditText description;
 
-
     Button viewfeed;
     Button deletefeed;
     Button updatefeed;
@@ -30,40 +29,8 @@ public class FeedbackList extends AppCompatActivity {
         viewfeed = (Button) findViewById(R.id.view);
         deletefeed = (Button)findViewById(R.id.deletefeed);
         updatefeed = (Button)findViewById(R.id.updatefeed);
-        viewfeedback();
         deletefeedback();
         updatefeedback();
-    }
-
-    private void viewfeedback() {
-        viewfeed.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Cursor res = db.getAllfeedback();
-                if (res.getCount() == 0) {
-                    ///Show message
-                    showMessage("ERROR! ", "Nothing Found");
-                    return;
-                }
-
-                StringBuffer buffer = new StringBuffer();
-                while (res.moveToNext()) {
-                    buffer.append("ID :" + res.getString(0) + "\n");
-                    buffer.append("Topic :" + res.getString(1) + "\n");
-                    buffer.append("Description :" + res.getString(2) + "\n\n");
-                }
-
-                //Show all data
-                showMessage("Data", buffer.toString());
-            }
-        });
-    }
-    public void showMessage(String title, String Message) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setCancelable(true);
-        builder.setTitle(title);
-        builder.setMessage(Message);
-        builder.show();
     }
 
     private void deletefeedback() {

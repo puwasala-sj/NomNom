@@ -152,7 +152,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
     //show database feedback table
     public Cursor getAllfeedback() {
-        SQLiteDatabase db = this.getWritableDatabase();
+        SQLiteDatabase db = this.getReadableDatabase();
         Cursor res = db.rawQuery("select * from "+ TABLE_NAME_FEEDBACK,null);
         return res;
     }
