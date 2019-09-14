@@ -11,20 +11,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "NomNom.db";
 
     //Register Table
-    public static final String TABLE_NAME_REGISTER = "Register";
+    public static final String TABLE_NAME_REGISTER = "signUp";
     public static final String COLUMN_NAME_ID = "id";
     public static final String COLUMN_NAME_USERNAME = "username";
     public static final String COLUMN_NAME_EMAIL = "email";
     public static final String COLUMN_NAME_PASSWORD = "password";
 
     //Feedback Table
-    public static final String TABLE_NAME_FEEDBACK = "Feedback";
+    public static final String TABLE_NAME_FEEDBACK = "Foodfeedback";
     public static final String COLUMN_NAME_FID = "fID";
     public static final String COLUMN_NAME_TOPIC = "Topic";
     public static final String COLUMN_NAME_DESCRIPTION = "Description";
 
     //Order Table
-    public static final String TABLE_NAME_ORDER = "Orders";
+    public static final String TABLE_NAME_ORDER = "Foodorders";
     public static final String COLUMN_NAME_OID = "oID";
     public static final String COLUMN_NAME = "name";
     public static final String COLUMN_NAME_ADDRESS = "address";
@@ -70,11 +70,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME_REGISTER);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME_REGISTER+";");
         onCreate(db);
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME_FEEDBACK);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME_FEEDBACK+";");
         onCreate(db);
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME_ORDER);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME_ORDER+";");
         onCreate(db);
 
     }
@@ -125,6 +125,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return true;
     }
 
+    public boolean checkUser  (String  username, String password) {
+        String[] columns = {COLUMN_NAME_ID };
+        SQLiteDatabase db = getReadableDatabase();
+        String selection = COLUMN_NAME_USERNAME + "=?" + "and" + COLUMN_NAME_PASSWORD + "m?";
+        String[] selectionArgs = {username, password};
+        Cursor cursor = db.query(TABLE_NAME_REGISTER, columns, selection, selectionArgs, null, null, null);
+        int count = cursor.getCount();
+        cursor.close();
+        db.close();
+
+        if (count > 0)
+            return true;
+        else
+            return false;
+    }
 
     //interface which provides random read write access to result
     public Cursor getAllData() {
@@ -153,23 +168,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return db.delete(TABLE_NAME_ORDER, "orderID = ?", new String[] {orderID});
     }
 
-
-
-    public boolean checkUser  (String  username, String password) {
-        String[] columns = {COLUMN_NAME_ID };
-        SQLiteDatabase db = getReadableDatabase();
-        String selection = COLUMN_NAME_USERNAME + "=?" + "and" + COLUMN_NAME_PASSWORD + "m?";
-        String[] selectionArgs = {username, password};
-        Cursor cursor = db.query(TABLE_NAME_REGISTER, columns, selection, selectionArgs, null, null, null);
-        int count = cursor.getCount();
-        cursor.close();
-        db.close();
-
-        if (count > 0)
-            return true;
-        else
-            return false;
-    }
     //Menu
     public void queryData(String sql){
         SQLiteDatabase database = getWritableDatabase();

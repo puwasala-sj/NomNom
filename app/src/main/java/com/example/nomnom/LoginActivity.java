@@ -38,6 +38,8 @@ public class LoginActivity extends AppCompatActivity {
                 if (result ==  true)
                 {
                     Toast.makeText(LoginActivity.this, "Welcome",Toast.LENGTH_SHORT) .show();
+                    Intent intent = new Intent(LoginActivity.this, Home.class);
+                    startActivity(intent);
                 }
                 else
                 {
