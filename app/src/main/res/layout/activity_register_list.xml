@@ -4,6 +4,59 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg4"
     tools:context=".RegisterList">
 
+    <TextView
+        android:id="@+id/registerFuntions"
+        android:layout_width="324dp"
+        android:layout_height="65dp"
+        android:text="@string/registerFunctions"
+        android:textColor="@color/colorw"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toTopOf="@+id/listUser"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.333" />
+
+    <Button
+        android:id="@+id/listUser"
+        android:layout_width="187dp"
+        android:layout_height="62dp"
+        android:layout_marginBottom="60dp"
+        android:background="#CD4B0A5E"
+        android:text="@string/listUser"
+        android:textColor="@color/colorw"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/deleteUser"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/deleteUser"
+        android:layout_width="187dp"
+        android:layout_height="62dp"
+        android:layout_marginBottom="60dp"
+        android:background="#CD4B0A5E"
+        android:text="@string/deleteUser"
+        android:textColor="@color/colorw"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/updateUser"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/updateUser"
+        android:layout_width="187dp"
+        android:layout_height="62dp"
+        android:layout_marginBottom="176dp"
+        android:background="#CD4B0A5E"
+        android:text="@string/updateUser"
+        android:textColor="@color/colorw"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
