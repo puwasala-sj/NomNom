@@ -226,7 +226,7 @@ public class FoodList extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
 
-        if(requestCode == 888 && requestCode == RESULT_OK && data != null){
+        if(requestCode == 888 && resultCode == RESULT_OK && data != null){
             Uri uri = data.getData();
 
             try {
