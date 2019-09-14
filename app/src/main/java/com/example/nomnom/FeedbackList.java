@@ -17,6 +17,7 @@ public class FeedbackList extends AppCompatActivity {
     EditText topic;
     EditText description;
 
+
     Button viewfeed;
     Button deletefeed;
     Button updatefeed;
@@ -69,7 +70,7 @@ public class FeedbackList extends AppCompatActivity {
         deletefeed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Integer deletedRows = db.deleteFeedback(fID.getText().toString());
+                Integer deletedRows = db.deletefeed(topic.getText().toString());
                 if(deletedRows > 0)
                     Toast.makeText(FeedbackList.this, "Data Deleted Successfully", Toast.LENGTH_LONG).show();
                 else
@@ -79,6 +80,19 @@ public class FeedbackList extends AppCompatActivity {
     }
 
     private void updatefeedback() {
-
-    }
+            updatefeed.setOnClickListener(
+                    new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            boolean isUpdate = db.updatefeedback((topic.getText().toString()),(description.getText().toString()));
+                            if (isUpdate == true) {
+                                Toast.makeText(FeedbackList.this, "Data Updated Successfully", Toast.LENGTH_LONG).show();
+                            }
+                            else{
+                                Toast.makeText(FeedbackList.this, "Data Not Inserted", Toast.LENGTH_LONG).show();
+                            }
+                        }
+                    }
+            );
+        }
 }
