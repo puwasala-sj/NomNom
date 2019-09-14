@@ -125,6 +125,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return true;
     }
 
+    //Check username and password
     public boolean checkUser(String  username, String password) {
         String[] columns = {COLUMN_NAME_ID };
         SQLiteDatabase db = getReadableDatabase();
@@ -161,8 +162,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return res;
     }
 
-    //Update data in Order table
-    public boolean updateData(String id, String name, String address,String contactNo, String quantity) {
+    //Delete user from register table
+    public Integer deleteUser (String id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        return db.delete(TABLE_NAME_REGISTER, "id = ?", new String[] {id});
+    }
+
+    //Delete feedback from feedback table
+    public Integer deleteFeedback (String fID) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        return db.delete(TABLE_NAME_FEEDBACK, "fID = ?", new String[] {fID});
+    }
+
+    //Delete data from Order table
+    public Integer deleteData (String orderID) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        return db.delete(TABLE_NAME_ORDER, "orderID = ?", new String[] {orderID});
+    }
+
+    //Update data in register table
+    public boolean updateUser(String id, String name, String address,String contactNo, String quantity) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -175,10 +194,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return true;
     }
 
-    //Delete data from Order table
-    public Integer deleteData (String orderID) {
+    //Update data in Order table
+    public boolean updateData(String id, String name, String address,String contactNo, String quantity) {
         SQLiteDatabase db = this.getWritableDatabase();
-        return db.delete(TABLE_NAME_ORDER, "orderID = ?", new String[] {orderID});
+
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_NAME, name);
+        values.put(COLUMN_NAME_ADDRESS, address);
+        values.put(COLUMN_NAME_CONTACT, contactNo);
+        values.put(COLUMN_NAME_QUANTITY, quantity);
+
+        db.update(TABLE_NAME_ORDER, values, "orderID = ?", new String[] {id});
+        return true;
     }
 
     //Menu
