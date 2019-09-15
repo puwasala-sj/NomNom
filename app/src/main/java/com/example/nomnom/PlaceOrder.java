@@ -60,7 +60,7 @@ public class PlaceOrder extends AppCompatActivity {
                             if (isInserted = true) {
                                 Toast.makeText(PlaceOrder.this, "Order placed", Toast.LENGTH_LONG).show();
                             } else {
-                                Toast.makeText(PlaceOrder.this, "Error", Toast.LENGTH_LONG).show();
+                                Toast.makeText(PlaceOrder.this, "Error!", Toast.LENGTH_LONG).show();
                             }
                         }
                     }
