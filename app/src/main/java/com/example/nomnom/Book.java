@@ -60,7 +60,7 @@ public class Book extends AppCompatActivity {
                     if (isInserted = true) {
                         Toast.makeText(Book.this, "Order placed", Toast.LENGTH_LONG).show();
                     } else {
-                        Toast.makeText(Book.this, "Error", Toast.LENGTH_LONG).show();
+                        Toast.makeText(Book.this, "Error!", Toast.LENGTH_LONG).show();
                     }
                 }
             }
