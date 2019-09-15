@@ -22,6 +22,7 @@ public class Register extends AppCompatActivity {
     EditText Password;
     EditText ConfirmPassword;
     Button RegisterNow;
+    Button List;
     DatabaseHelper db;
 
 
@@ -36,6 +37,14 @@ public class Register extends AppCompatActivity {
         Password = (EditText) findViewById(R.id.password);
         ConfirmPassword = (EditText) findViewById(R.id.confirmPassword);
         RegisterNow = (Button) findViewById(R.id.registerNow);
+        List = (Button) findViewById(R.id.listUser);
+        List.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent RList = new Intent(Register.this,RegisterList.class);
+                startActivity(RList);
+            }
+        });
         AddUser();
 
     }

@@ -36,7 +36,7 @@
     <string name="description">Description</string>
     <string name="deletefeed">Delete Feedback</string>
     <string name="updatefeed">Update Feedback</string>
-    <string name="registerFunctions">Register Functions</string>
+    <string name="registerFunctions">User List</string>
     <string name="deleteUser">Delete Users</string>
     <string name="listUser">List Users</string>
     <string name="updateUser">Update Users</string>

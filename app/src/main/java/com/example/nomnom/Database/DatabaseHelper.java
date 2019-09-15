@@ -166,7 +166,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     //Delete user from register table
     public Integer deleteUser (String username) {
-        SQLiteDatabase db = this.getReadableDatabase();
+        SQLiteDatabase db = this.getWritableDatabase();
         String selection = COLUMN_NAME_USERNAME + "LIKE ?";
         String[] selectionArgs = {username};
         int count = db.delete(TABLE_NAME_REGISTER,selection,selectionArgs);
