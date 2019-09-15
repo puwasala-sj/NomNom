@@ -48,7 +48,7 @@ public class PlaceOrder extends AppCompatActivity {
                         String quantity = editQuantity.getText().toString();
 
                         if (name.isEmpty() || address.isEmpty() || contact.isEmpty() || quantity.isEmpty()) {
-                            Toast.makeText(PlaceOrder.this, "Fill all details", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(PlaceOrder.this, "Fill all details!", Toast.LENGTH_SHORT).show();
                         } else if(!name.matches("^[a-zA-Z]+$")) {
                             Toast.makeText(PlaceOrder.this, "Enter letters only", Toast.LENGTH_SHORT).show();
                         } else if(!contact.matches("^[0-9]+$")) {
