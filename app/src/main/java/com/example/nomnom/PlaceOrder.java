@@ -52,7 +52,7 @@ public class PlaceOrder extends AppCompatActivity {
                         } else if(!name.matches("^[a-zA-Z]+$")) {
                             Toast.makeText(PlaceOrder.this, "Enter letters only!", Toast.LENGTH_SHORT).show();
                         } else if(!contact.matches("^[0-9]+$")) {
-                            Toast.makeText(PlaceOrder.this, "Contact number should be numbers only!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(PlaceOrder.this, "Contact number should be numbers only", Toast.LENGTH_SHORT).show();
                         }else if(!quantity.matches("^[0-9]+$")) {
                             Toast.makeText(PlaceOrder.this, "Quantity should be numbers only", Toast.LENGTH_SHORT).show();
                         }else{
