@@ -233,7 +233,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         String selection = COLUMN_NAME + "LIKE ?";
         String[] selectionArgs = {name};
-        int count = db.delete(TABLE_NAME_FEEDBACK,selection,selectionArgs);
+        int count = db.delete(TABLE_NAME_ORDER,selection,selectionArgs);
         return count;
     }
 

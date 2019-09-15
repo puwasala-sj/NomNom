@@ -11,6 +11,7 @@ import android.widget.Button;
 public class Home extends AppCompatActivity {
     Button menu;
     Button feedback;
+    Button hall;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +31,15 @@ public class Home extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Home.this, FeedBack.class);
+                startActivity(intent);
+            }
+        });
+
+        hall = (Button) findViewById(R.id.hall);
+        hall.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Home.this, Book.class);
                 startActivity(intent);
             }
         });
