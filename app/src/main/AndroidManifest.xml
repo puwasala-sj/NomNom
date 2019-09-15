@@ -10,12 +10,13 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".RegisterList"></activity>
+        <activity android:name=".edit_book"></activity>
+        <activity android:name=".RegisterList" />
         <activity android:name=".Register" />
-        <activity android:name=".EditOrder"/>
+        <activity android:name=".EditOrder" />
         <activity android:name=".Home" />
         <activity android:name=".FeedBack" />
-        <activity android:name=".PlaceOrder"/>
+        <activity android:name=".PlaceOrder" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -23,7 +24,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
     </application>
 
