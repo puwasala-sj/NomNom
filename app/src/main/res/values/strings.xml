@@ -47,6 +47,9 @@
     <string name="people">Number of People</string>
     <string name="btnBook">Book Now</string>
     <string name="viewBook">View Bookings</string>
+    <string name="yourBooking">Your Bookings</string>
+    <string name="editBook">Edit Bookings</string>
+    <string name="deleteBook">Cancel Booking</string>
 
 
 </resources>
