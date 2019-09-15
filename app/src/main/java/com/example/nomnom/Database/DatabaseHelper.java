@@ -152,7 +152,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
     //show database feedback table
     public Cursor getAllfeedback() {
-        SQLiteDatabase db = this.getWritableDatabase();
+        SQLiteDatabase db = this.getReadableDatabase();
         Cursor res = db.rawQuery("select * from "+ TABLE_NAME_FEEDBACK,null);
         return res;
     }
@@ -176,7 +176,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     //Delete feedback from feedback table
     public Integer deletefeed (String topic) {
         SQLiteDatabase db = this.getWritableDatabase();
-        String selection = COLUMN_NAME_TOPIC + "LIKE ?";
+        String selection = COLUMN_NAME_TOPIC + " LIKE ?";
         String[] selectionArgs = {topic};
         int count = db.delete(TABLE_NAME_FEEDBACK,selection,selectionArgs);
         return count;
