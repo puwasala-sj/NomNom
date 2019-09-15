@@ -40,6 +40,13 @@
     <string name="deleteUser">Delete Users</string>
     <string name="listUser">List Users</string>
     <string name="updateUser">Update Users</string>
+    <string name="bookHall">Book Your Hall</string>
+    <string name="name1">Name</string>
+    <string name="contact1">Contact Number</string>
+    <string name="des">Description</string>
+    <string name="people">Number of People</string>
+    <string name="btnBook">Book Now</string>
+    <string name="viewBook">View Bookings</string>
 
 
 </resources>
