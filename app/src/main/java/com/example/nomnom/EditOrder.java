@@ -77,7 +77,7 @@ public class EditOrder extends AppCompatActivity {
                     public void onClick(View view) {
                         boolean isUpdate = myDb.updateOrder(editText_name.getText().toString(),editText_address.getText().toString(),editText_contact.getText().toString(),editQuantity.getText().toString());
                         if (isUpdate == true) {
-                            Toast.makeText(EditOrder.this, "Data Updated Successfully", Toast.LENGTH_LONG).show();
+                            Toast.makeText(EditOrder.this, "Data Updated Successfully!", Toast.LENGTH_LONG).show();
                         }
                         else{
                             Toast.makeText(EditOrder.this, "Data Not Inserted", Toast.LENGTH_LONG).show();
