@@ -5,101 +5,49 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.nomnom.Database.DatabaseHelper;
 
+import java.util.ArrayList;
+
 public class EditOrder extends AppCompatActivity {
+    private static final String TAG = "EditOrder";
+    DatabaseHelper db;
 
-    DatabaseHelper myDb;
-    EditText editText_name, editText_address,editText_contact, editQuantity;
-
-    Button button_View;
-    Button button_Update;
-    Button button_Delete;
+    private ListView listView;
+    Button delete;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_order);
 
-        button_View = (Button) findViewById(R.id.viewOrder);
-        button_Update = (Button) findViewById(R.id.editOrder);
-        button_Delete = (Button) findViewById(R.id.deleteOrder);
-        viewAll();
-        UpdateData();
-        DeleteData();
+        listView = (ListView)findViewById(R.id.ListView);
+        db = new DatabaseHelper(this);
+        listOrders();
     }
 
-    public void viewAll() {
-        button_View.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Cursor res = myDb.getAllData();
-                        if (res.getCount() == 0) {
-                            ///Show message
-                            showMessage("ERROR! ", "Nothing Found");
-                            return;
-                        }
+    private void listOrders() {
+        Log.d(TAG,"listOrders: Displaying data in the ListView");
+        Cursor orders = db.getAllData();
+        ArrayList<String> listOrders = new ArrayList<>();
+        while(orders.moveToNext()){
+            listOrders.add("Name :"+orders.getString(1));
+            listOrders.add("Address :"+orders.getString(2));
+            listOrders.add("Contact Number :"+orders.getString(3));
+            listOrders.add("Quantity :"+orders.getString(4));
+        }
+        ListAdapter adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,listOrders);
+        listView.setAdapter(adapter);
 
-                        StringBuffer buffer = new StringBuffer();
-                        while (res.moveToNext()) {
-                            buffer.append("ID :" + res.getString(0) + "\n");
-                            buffer.append("Name :" + res.getString(1) + "\n");
-                            buffer.append("Address :" + res.getString(2) + "\n");
-                            buffer.append("ContactNumber :" + res.getString(2) + "\n");
-                            buffer.append("Quantity :" + res.getString(3) + "\n\n");
-                        }
-
-                        //Show all data
-                        showMessage("Data", buffer.toString());
-                    }
-                }
-        );
-    }
-
-    public void showMessage(String title, String Message) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setCancelable(true);
-        builder.setTitle(title);
-        builder.setMessage(Message);
-        builder.show();
-    }
-
-    public void UpdateData() {
-        button_Update.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        boolean isUpdate = myDb.updateOrder(editText_name.getText().toString(),editText_address.getText().toString(),editText_contact.getText().toString(),editQuantity.getText().toString());
-                        if (isUpdate == true) {
-                            Toast.makeText(EditOrder.this, "Data Updated Successfully!", Toast.LENGTH_LONG).show();
-                        }
-                        else{
-                            Toast.makeText(EditOrder.this, "Data Not Inserted", Toast.LENGTH_LONG).show();
-                        }
-                    }
-                }
-        );
-    }
-
-    public void DeleteData() {
-        button_Delete.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Integer deletedRows = myDb.deleteOrder(editText_name.getText().toString());
-                        if(deletedRows > 0)
-                            Toast.makeText(EditOrder.this, "Data Deleted Successfully", Toast.LENGTH_LONG).show();
-                        else
-                            Toast.makeText(EditOrder.this, "Data Not Deleted", Toast.LENGTH_LONG).show();
-                    }
-                }
-        );
     }
 }
 
