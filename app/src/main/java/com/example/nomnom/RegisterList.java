@@ -2,9 +2,12 @@ package com.example.nomnom;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListAdapter;
@@ -45,6 +48,23 @@ public class RegisterList extends AppCompatActivity {
         }
         ListAdapter adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,listUsers);
         listView.setAdapter(adapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                String username = adapterView.getItemAtPosition(i).toString();
+                Log.d(TAG,"onItemClick: You clicked on" + username);
+
+                Cursor data = db.getUsernameID(username);
+                int usernameID = -1;
+                while(data.moveToNext()){
+                    usernameID = data.getInt(0);
+                }
+                if(usernameID > -1){
+                    Log.d(TAG,"onItemClick: The ID is: " + usernameID);
+                }
+            }
+        });
     }
 
     /*public void DeleteData() {

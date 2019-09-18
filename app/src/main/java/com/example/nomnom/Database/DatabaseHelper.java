@@ -210,6 +210,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return res;
     }
 
+    //Return only id with username
+    public Cursor getUsernameID(String username) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "Select " + COLUMN_NAME_ID + " From " + TABLE_NAME_REGISTER + " Where " + COLUMN_NAME_USERNAME + " = " + username + "'";
+        Cursor data = db.rawQuery(query,null);
+        return data;
+    }
+
     //Delete user from register table
     public Integer deleteUser (String username) {
         SQLiteDatabase db = this.getWritableDatabase();
