@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg35"
+    android:background="@drawable/w4"
     tools:context=".edit_book">
 
     <TextView
@@ -13,71 +13,46 @@
         android:layout_width="377dp"
         android:layout_height="58dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
+        android:fontFamily="serif"
         android:text="@string/yourBooking"
         android:textAlignment="center"
-        android:textColor="#703060"
-        android:textSize="40sp"
+        android:textColor="#008577"
+        android:textSize="36sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.054" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-
-        android:id="@+id/viewBook"
-        android:layout_width="215dp"
-        android:layout_height="75dp"
-        android:background="?android:attr/colorAccent"
-        android:text="@string/viewBook"
-        android:textColor="#FFFFFF"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.242" />
-
-    <Button
-
-        android:id="@+id/editBook"
-        android:layout_width="215dp"
-        android:layout_height="75dp"
+    <ListView
+        android:id="@+id/ListView"
+        android:layout_width="380dp"
+        android:layout_height="536dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="364dp"
-        android:background="?android:attr/colorAccent"
-        android:text="@string/editBook"
-        android:textColor="#FFFFFF"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="#68FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewBook" />
-
+        app:layout_constraintTop_toBottomOf="@+id/yourBooking" />
 
     <Button
-
         android:id="@+id/deleteBook"
-        android:layout_width="215dp"
-        android:layout_height="75dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="160dp"
-        android:background="?android:attr/colorAccent"
+        android:layout_width="227dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="#A8008577"
         android:text="@string/deleteBook"
         android:textColor="#FFFFFF"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editBook"
-        app:layout_constraintVertical_bias="0.221" />
+        app:layout_constraintTop_toBottomOf="@+id/ListView" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

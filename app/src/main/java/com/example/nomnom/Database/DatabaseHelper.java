@@ -33,8 +33,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COLUMN_NAME_CONTACT = "contactNo";
     public static final String COLUMN_NAME_QUANTITY = "quantity";
 
-    //Order Table
-    public static final String TABLE_NAME_BOOKING = "Foodbookings";
+    //Booking Table
+    public static final String TABLE_NAME_BOOKINGS = "Bookings";
     public static final String COLUMN_NAME_BID = "bID";
     public static final String COLUMN_BNAME = "name";
     public static final String COLUMN_NAME_BCONTACT = "contactNum";
@@ -80,7 +80,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         //Create Table Booking
         String SQL_CREATE_ENTRIES_BOOKING =
-                "CREATE TABLE " + TABLE_NAME_BOOKING + " (" +
+                "CREATE TABLE " + TABLE_NAME_BOOKINGS + " (" +
                         COLUMN_NAME_BID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                         COLUMN_BNAME + " TEXT," +
                         COLUMN_NAME_BCONTACT + " TEXT," +
@@ -98,7 +98,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME_ORDER+";");
         onCreate(db);
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME_BOOKING+";");
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME_BOOKINGS+";");
         onCreate(db);
 
     }
@@ -159,7 +159,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(COLUMN_NAME_BDESCRIPTION, description);
         values.put(COLUMN_NAME_BPEOPLE, people);
 
-        long result = db.insert(TABLE_NAME_BOOKING, null, values);
+        long result = db.insert(TABLE_NAME_BOOKINGS, null, values);
         if (result == -1)
             return false;
         else
@@ -206,7 +206,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     //show database book table
     public Cursor getAllBookings() {
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor res = db.rawQuery("select * from "+ TABLE_NAME_BOOKING,null);
+        Cursor res = db.rawQuery("select * from "+ TABLE_NAME_BOOKINGS,null);
         return res;
     }
 
@@ -242,7 +242,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         String selection = COLUMN_BNAME + "LIKE ?";
         String[] selectionArgs = {name};
-        int count = db.delete(TABLE_NAME_BOOKING,selection,selectionArgs);
+        int count = db.delete(TABLE_NAME_BOOKINGS,selection,selectionArgs);
         return count;
     }
 
@@ -318,7 +318,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         String selection = COLUMN_BNAME + " LIKE ?";
         String[] selectionArgs = {name};
-        int count = db.update(TABLE_NAME_BOOKING, values, selection,selectionArgs);
+        int count = db.update(TABLE_NAME_BOOKINGS, values, selection,selectionArgs);
         if(count > 0){
             return true;
         }
