@@ -43,17 +43,18 @@ public class DeleteOrder extends AppCompatActivity {
         //set the text to show the current selected name
         edText.setText(selectedName);
 
-        /*update.setOnClickListener(new View.OnClickListener() {
+        update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String item = edText.getText().toString();
-                if(!item.equals("")){
-                    db.updateOrder(item,selectedID,selectedName);
+                String name = edText.getText().toString();
+                if(!name.equals("")){
+                    db.updateOrder(name,selectedID,selectedName);
+                    Toast.makeText(DeleteOrder.this, "Updated successfully", Toast.LENGTH_SHORT).show();
                 }else{
-                    toastMessage("You must enter a name");
+                    Toast.makeText(DeleteOrder.this, "Enter a name", Toast.LENGTH_SHORT).show();
                 }
             }
-        });*/
+        });
 
         delete.setOnClickListener(new View.OnClickListener() {
             @Override

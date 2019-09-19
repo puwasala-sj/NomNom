@@ -302,24 +302,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     //Update data in Order table
-    public boolean updateOrder(String name, String address, String contactNo, String quantity) {
+    public void updateOrder(String newname, int oID ,String oldname) {
         SQLiteDatabase db = this.getWritableDatabase();
-
-        ContentValues values = new ContentValues();
-        values.put(COLUMN_NAME, name);
-        values.put(COLUMN_NAME_ADDRESS, address);
-        values.put(COLUMN_NAME_CONTACT, contactNo);
-        values.put(COLUMN_NAME_QUANTITY, quantity);
-
-        String selection = COLUMN_NAME + " LIKE ?";
-        String[] selectionArgs = {name};
-        int count = db.update(TABLE_NAME_ORDER, values, selection,selectionArgs);
-        if(count > 0){
-            return true;
-        }
-        else{
-            return false;
-        }
+        String query = "UPDATE " + TABLE_NAME_ORDER + " SET " + COLUMN_NAME + " = '" + newname + "' WHERE " + COLUMN_NAME_OID + " = '" + oID + "'" + " AND " + COLUMN_NAME + " = '" + oldname + "'";
+        Log.d(TAG,"updateUsername:query: "+query);
+        Log.d(TAG,"updateUsername:setting name to: "+newname);
+        db.execSQL(query);
     }
 
     //Update data in Booking table
