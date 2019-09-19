@@ -4,52 +4,54 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/w6"
-    tools:context=".EditRegister">
+    android:background="@drawable/w7"
+    tools:context=".DeleteOrder">
 
     <EditText
-        android:id="@+id/editText"
-        android:layout_width="312dp"
-        android:layout_height="67dp"
-        android:layout_marginTop="248dp"
+        android:id="@+id/edText"
+        android:layout_width="297dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="84dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:textColor="#FFFFFF"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/deleteUser"
+        android:id="@+id/deleteOrder"
         android:layout_width="170dp"
         android:layout_height="65dp"
-        android:layout_marginTop="48dp"
-        android:background="#9582F81A"
-        android:text="@string/deleteUser"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="8dp"
+        android:background="#ABFFFFFF"
+        android:text="@string/deleteOrder"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintTop_toBottomOf="@+id/edText" />
 
     <Button
-        android:id="@+id/updateUser"
+        android:id="@+id/editOrder"
         android:layout_width="170dp"
         android:layout_height="65dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginBottom="250dp"
-        android:background="#9582F81A"
-        android:text="@string/updateUser"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="#ABFFFFFF"
+        android:text="@string/editOrder"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/deleteUser"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/deleteOrder"
+        app:layout_constraintVertical_bias="0.067" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -224,11 +224,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return data;
     }
 
+    //Return only id with name
+    public Cursor getorderID(String name) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT " + COLUMN_NAME_OID + " FROM " + TABLE_NAME_ORDER +
+                " WHERE " + COLUMN_NAME + " = '" + name + "' ";
+        Cursor data = db.rawQuery(query, null);
+        return data;
+    }
+
     //Delete user from register table
-    public void deleteUser(int userID, String username) {
+    public void deleteUser(int id, String username) {
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "DELETE FROM " + TABLE_NAME_REGISTER + " WHERE "
-                + COLUMN_NAME_ID + " = '" + userID + "'" +
+                + COLUMN_NAME_ID + " = '" + id + "'" +
                 " AND " + COLUMN_NAME_USERNAME + " = '" + username + "'";
         Log.d(TAG, "deleteName: query: " + query);
         Log.d(TAG, "deleteName: Deleting " + username + " from database.");
@@ -245,12 +254,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     //Delete data from Order table
-    public Integer deleteOrder (String name) {
-        SQLiteDatabase db = this.getReadableDatabase();
-        String selection = COLUMN_NAME + "LIKE ?";
-        String[] selectionArgs = {name};
-        int count = db.delete(TABLE_NAME_ORDER,selection,selectionArgs);
-        return count;
+    public void deleteOrder (int orderID, String name) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "DELETE FROM " + TABLE_NAME_ORDER + " WHERE "
+                + COLUMN_NAME_OID + " = '" + orderID + "'" +
+                " AND " + COLUMN_NAME + " = '" + name + "'";
+        Log.d(TAG, "deleteName: query: " + query);
+        Log.d(TAG, "deleteName: Deleting " + name + " from database.");
+        db.execSQL(query);
     }
 
     //Delete data from Booking table
@@ -263,9 +274,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     //Update data in register table
-    public void updateUser(String newusername, int userID ,String oldusername) {
+    public void updateUser(String newusername, int id ,String oldusername) {
         SQLiteDatabase db = this.getWritableDatabase();
-        String query = "UPDATE " + TABLE_NAME_REGISTER + " SET " + COLUMN_NAME_USERNAME + " = '" + newusername + "' WHERE " + COLUMN_NAME_ID + " = '" + userID + "'" + " AND " + COLUMN_NAME_USERNAME + " = '" + oldusername + "'";
+        String query = "UPDATE " + TABLE_NAME_REGISTER + " SET " + COLUMN_NAME_USERNAME + " = '" + newusername + "' WHERE " + COLUMN_NAME_ID + " = '" + id + "'" + " AND " + COLUMN_NAME_USERNAME + " = '" + oldusername + "'";
         Log.d(TAG,"updateUsername:query: "+query);
         Log.d(TAG,"updateUsername:setting name to: "+newusername);
         db.execSQL(query);

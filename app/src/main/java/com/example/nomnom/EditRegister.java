@@ -34,16 +34,17 @@ public class EditRegister extends AppCompatActivity {
 
         Intent receivedIntent = getIntent();
 
-        selectedID = receivedIntent.getIntExtra("userId",0);
-        selectedUsername = receivedIntent.getStringExtra("Username");
+        selectedID = receivedIntent.getIntExtra("id",-1);
+        selectedUsername = receivedIntent.getStringExtra("username");
         editText.setText(selectedUsername);
 
         update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String user = editText.getText().toString();
-                if(!user.equals(" ")){
-                    db.updateUser(user,selectedID,selectedUsername);
+                String name = editText.getText().toString();
+                if(!name.equals("")){
+                    db.updateUser(name,selectedID,selectedUsername);
+                    Toast.makeText(EditRegister.this, "Updated successfully", Toast.LENGTH_SHORT).show();
                 }else{
                     Toast.makeText(EditRegister.this, "You must enter a name", Toast.LENGTH_SHORT).show();
                 }

@@ -40,9 +40,9 @@ public class RegisterList extends AppCompatActivity {
         Cursor user = db.getAllUser();
         ArrayList<String> listUsers = new ArrayList<>();
         while(user.moveToNext()){
-            listUsers.add("Username :"+user.getString(1));
-            listUsers.add("Email :"+user.getString(2));
-            listUsers.add("Password :"+user.getString(3));
+            listUsers.add(user.getString(1));
+            listUsers.add(user.getString(2));
+            listUsers.add(user.getString(3));
         }
         ListAdapter adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,listUsers);
         listView.setAdapter(adapter);
@@ -54,15 +54,15 @@ public class RegisterList extends AppCompatActivity {
                 Log.d(TAG, "onItemClick: You Clicked on " + username);
 
                 Cursor data = db.getUserID(username); //get the id associated with that name
-                int userID = 0;
+                int id = -1;
                 while(data.moveToNext()){
-                    userID = data.getInt(0);
+                    id = data.getInt(0);
                 }
-                if(userID > 0){
-                    Log.d(TAG, "onItemClick: The ID is: " + userID);
+                if(id > -1){
+                    Log.d(TAG, "onItemClick: The ID is: " + id);
                     Intent editScreenIntent = new Intent(RegisterList.this, EditRegister.class);
-                    editScreenIntent.putExtra("userId",userID);
-                    editScreenIntent.putExtra("Username",username);
+                    editScreenIntent.putExtra("id",id);
+                    editScreenIntent.putExtra("username",username);
                     startActivity(editScreenIntent);
                 }
                 else{

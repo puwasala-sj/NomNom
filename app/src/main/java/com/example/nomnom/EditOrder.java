@@ -3,10 +3,12 @@ package com.example.nomnom;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -40,14 +42,37 @@ public class EditOrder extends AppCompatActivity {
         Cursor orders = db.getAllData();
         ArrayList<String> listOrders = new ArrayList<>();
         while(orders.moveToNext()){
-            listOrders.add("Name :"+orders.getString(1));
-            listOrders.add("Address :"+orders.getString(2));
-            listOrders.add("Contact Number :"+orders.getString(3));
-            listOrders.add("Quantity :"+orders.getString(4));
+            listOrders.add(orders.getString(1));
+            listOrders.add(orders.getString(2));
+            listOrders.add(orders.getString(3));
+            listOrders.add(orders.getString(4));
         }
         ListAdapter adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,listOrders);
         listView.setAdapter(adapter);
 
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                String name = adapterView.getItemAtPosition(i).toString();
+                Log.d(TAG, "onItemClick: You Clicked on " + name);
+
+                Cursor data = db.getorderID(name); //get the id associated with that name
+                int oID = -1;
+                while(data.moveToNext()){
+                    oID = data.getInt(0);
+                }
+                if(oID > -1){
+                    Log.d(TAG, "onItemClick: The ID is: " + oID);
+                    Intent editScreenIntent = new Intent(EditOrder.this, DeleteOrder.class);
+                    editScreenIntent.putExtra("oID",oID);
+                    editScreenIntent.putExtra("name",name);
+                    startActivity(editScreenIntent);
+                }
+                else{
+                    Toast.makeText(EditOrder.this, "No ID found", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
     }
 }
 
