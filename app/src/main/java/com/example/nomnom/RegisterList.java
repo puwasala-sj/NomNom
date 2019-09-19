@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.nomnom.Database.DatabaseHelper;
 
@@ -32,9 +33,6 @@ public class RegisterList extends AppCompatActivity {
         db = new DatabaseHelper(this);
 
         listUsers();
-
-        //delete = (Button)findViewById(R.id.deleteUser);
-        //DeleteData();
     }
 
     public void listUsers(){
@@ -53,32 +51,24 @@ public class RegisterList extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String username = adapterView.getItemAtPosition(i).toString();
-                Log.d(TAG,"onItemClick: You clicked on" + username);
+                Log.d(TAG, "onItemClick: You Clicked on " + username);
 
-                Cursor data = db.getUsernameID(username);
-                int usernameID = -1;
+                Cursor data = db.getUserID(username); //get the id associated with that name
+                int userID = 0;
                 while(data.moveToNext()){
-                    usernameID = data.getInt(0);
+                    userID = data.getInt(0);
                 }
-                if(usernameID > -1){
-                    Log.d(TAG,"onItemClick: The ID is: " + usernameID);
+                if(userID > 0){
+                    Log.d(TAG, "onItemClick: The ID is: " + userID);
+                    Intent editScreenIntent = new Intent(RegisterList.this, EditRegister.class);
+                    editScreenIntent.putExtra("userId",userID);
+                    editScreenIntent.putExtra("Username",username);
+                    startActivity(editScreenIntent);
+                }
+                else{
+                    Toast.makeText(RegisterList.this, "No ID found", Toast.LENGTH_LONG).show();
                 }
             }
         });
     }
-
-    /*public void DeleteData() {
-        delete.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Integer deletedRows = db.deleteUser(username.getText().toString());
-                        if(deletedRows > 0)
-                            Toast.makeText(RegisterList.this, "Data Deleted Successfully", Toast.LENGTH_LONG).show();
-                        else
-                            Toast.makeText(RegisterList.this, "Data Not Deleted", Toast.LENGTH_LONG).show();
-                    }
-                }
-        );
-    }*/
 }

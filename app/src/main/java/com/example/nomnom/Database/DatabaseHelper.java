@@ -8,9 +8,11 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteStatement;
 import android.text.Selection;
+import android.util.Log;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "NomNom.db";
+    private static final String TAG = "DatabaseHelper";
 
     //Register Table
     public static final String TABLE_NAME_REGISTER = "signUp";
@@ -63,7 +65,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "CREATE TABLE " + TABLE_NAME_FEEDBACK + " (" +
                         COLUMN_NAME_FID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                         COLUMN_NAME_TOPIC + " TEXT," +
-                        COLUMN_NAME_DESCRIPTION  + " TEXT)";
+                        COLUMN_NAME_DESCRIPTION + " TEXT)";
 
         db.execSQL(SQL_CREATE_ENTRIES_FEEDBACK);
 
@@ -84,7 +86,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                         COLUMN_NAME_BID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                         COLUMN_BNAME + " TEXT," +
                         COLUMN_NAME_BCONTACT + " TEXT," +
-                        COLUMN_NAME_BDESCRIPTION+ " TEXT," +
+                        COLUMN_NAME_BDESCRIPTION + " TEXT," +
                         COLUMN_NAME_BPEOPLE + " TEXT)";
 
         db.execSQL(SQL_CREATE_ENTRIES_BOOKING);
@@ -92,19 +94,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME_REGISTER+";");
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME_REGISTER + ";");
         onCreate(db);
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME_FEEDBACK+";");
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME_FEEDBACK + ";");
         onCreate(db);
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME_ORDER+";");
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME_ORDER + ";");
         onCreate(db);
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME_BOOKINGS+";");
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME_BOOKINGS + ";");
         onCreate(db);
 
     }
 
     //Add user to register table
-    public boolean addUser(String username, String email,String password) {
+    public boolean addUser(String username, String email, String password) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -112,12 +114,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(COLUMN_NAME_EMAIL, email);
         values.put(COLUMN_NAME_PASSWORD, password);
 
-        long result = db.insert(TABLE_NAME_REGISTER,null,values);
+        long result = db.insert(TABLE_NAME_REGISTER, null, values);
         if (result == -1)
             return false;
         else
             return true;
     }
+
     //Add feedback to feedback table
     public boolean addFeedback(String topic, String description) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -132,8 +135,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         else
             return true;
     }
+
     //Add data to Order table
-    public boolean addInfoOrder(String name, String address,String contactNo, String quantity) {
+    public boolean addInfoOrder(String name, String address, String contactNo, String quantity) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -150,7 +154,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     //Add data to Booking table
-    public boolean addInfoBook(String name, String contactNum,String description, String people) {
+    public boolean addInfoBook(String name, String contactNum, String description, String people) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -167,8 +171,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     //Check username and password
-    public boolean checkUser(String  username, String password) {
-        String[] columns = {COLUMN_NAME_ID };
+    public boolean checkUser(String username, String password) {
+        String[] columns = {COLUMN_NAME_ID};
         SQLiteDatabase db = getReadableDatabase();
         String selection = COLUMN_NAME_USERNAME + "=?" + " and " + COLUMN_NAME_PASSWORD + "=?";
         String[] selectionArgs = {username, password};
@@ -186,45 +190,49 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     //show database register table
     public Cursor getAllUser() {
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor res = db.rawQuery("select * from "+ TABLE_NAME_REGISTER,null);
+        Cursor res = db.rawQuery("select * from " + TABLE_NAME_REGISTER, null);
         return res;
     }
+
     //show database feedback table
     public Cursor getAllfeedback() {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor res = db.rawQuery("select * from "+ TABLE_NAME_FEEDBACK,null);
+        Cursor res = db.rawQuery("select * from " + TABLE_NAME_FEEDBACK, null);
         return res;
     }
 
     //show database order table
     public Cursor getAllData() {
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor res = db.rawQuery("select * from "+ TABLE_NAME_ORDER,null);
+        Cursor res = db.rawQuery("select * from " + TABLE_NAME_ORDER, null);
         return res;
     }
 
     //show database book table
     public Cursor getAllBookings() {
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor res = db.rawQuery("select * from "+ TABLE_NAME_BOOKINGS,null);
+        Cursor res = db.rawQuery("select * from " + TABLE_NAME_BOOKINGS, null);
         return res;
     }
 
     //Return only id with username
-    public Cursor getUsernameID(String username) {
+    public Cursor getUserID(String username) {
         SQLiteDatabase db = this.getWritableDatabase();
-        String query = "Select " + COLUMN_NAME_ID + " From " + TABLE_NAME_REGISTER + " Where " + COLUMN_NAME_USERNAME + " = " + username + "'";
-        Cursor data = db.rawQuery(query,null);
+        String query = "SELECT " + COLUMN_NAME_ID + " FROM " + TABLE_NAME_REGISTER +
+                " WHERE " + COLUMN_NAME_USERNAME + " = '" + username + "' ";
+        Cursor data = db.rawQuery(query, null);
         return data;
     }
 
     //Delete user from register table
-    public Integer deleteUser (String username) {
+    public void deleteUser(int userID, String username) {
         SQLiteDatabase db = this.getWritableDatabase();
-        String selection = COLUMN_NAME_USERNAME + "LIKE ?";
-        String[] selectionArgs = {username};
-        int count = db.delete(TABLE_NAME_REGISTER,selection,selectionArgs);
-        return count;
+        String query = "DELETE FROM " + TABLE_NAME_REGISTER + " WHERE "
+                + COLUMN_NAME_ID + " = '" + userID + "'" +
+                " AND " + COLUMN_NAME_USERNAME + " = '" + username + "'";
+        Log.d(TAG, "deleteName: query: " + query);
+        Log.d(TAG, "deleteName: Deleting " + username + " from database.");
+        db.execSQL(query);
     }
 
     //Delete feedback from feedback table
@@ -255,23 +263,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     //Update data in register table
-    public boolean updateUser(String username, String email,String password) {
+    public void updateUser(String newusername, int userID ,String oldusername) {
         SQLiteDatabase db = this.getWritableDatabase();
-
-        ContentValues values = new ContentValues();
-        values.put(COLUMN_NAME_USERNAME, username);
-        values.put(COLUMN_NAME_EMAIL, email);
-        values.put(COLUMN_NAME_PASSWORD, password);
-
-        String selection = COLUMN_NAME_USERNAME + " LIKE ?";
-        String[] selectionArgs = {username};
-        int count = db.update(TABLE_NAME_REGISTER, values,selection,selectionArgs);
-        if(count > 0){
-            return true;
-        }
-        else{
-            return false;
-        }
+        String query = "UPDATE " + TABLE_NAME_REGISTER + " SET " + COLUMN_NAME_USERNAME + " = '" + newusername + "' WHERE " + COLUMN_NAME_ID + " = '" + userID + "'" + " AND " + COLUMN_NAME_USERNAME + " = '" + oldusername + "'";
+        Log.d(TAG,"updateUsername:query: "+query);
+        Log.d(TAG,"updateUsername:setting name to: "+newusername);
+        db.execSQL(query);
     }
 
     //Update data in feedback table
