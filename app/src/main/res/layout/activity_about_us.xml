@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/b21"
+    android:background="@drawable/b9"
     tools:context=".AboutUs">
 
     <TextView
@@ -16,7 +16,7 @@
         android:layout_marginEnd="8dp"
         android:fontFamily="serif"
         android:text="@string/aboutnom2"
-        android:textColor="#00d2ff"
+        android:textColor="#20c714"
         android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -34,10 +34,11 @@
         android:fontFamily="sans-serif-condensed"
         android:text="@string/intro1"
         android:textAlignment="center"
-        android:textColor="#ee6879"
+        android:textColor="#c214c7"
         android:textSize="32sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/aboutus" />
 
@@ -51,9 +52,9 @@
         android:fontFamily="serif"
         android:text="@string/intro2"
         android:textAlignment="center"
-        android:textColor="#f1f079"
-        android:textSize="30sp"
-        android:textStyle="bold"
+        android:textColor="#00d2ff"
+        android:textSize="24sp"
+        android:textStyle="bold|italic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
