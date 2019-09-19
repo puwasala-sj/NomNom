@@ -51,7 +51,7 @@
         android:fontFamily="serif"
         android:text="@string/intro2"
         android:textAlignment="center"
-        android:textColor="#008577"
+        android:textColor="#f1f079"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
