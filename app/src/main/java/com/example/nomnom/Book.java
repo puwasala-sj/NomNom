@@ -50,15 +50,17 @@ public class Book extends AppCompatActivity {
                 if (name.isEmpty() || contact.isEmpty() || description.isEmpty() || people.isEmpty()) {
                     Toast.makeText(Book.this, "Fill all details", Toast.LENGTH_SHORT).show();
                 } else if(!name.matches("^[a-zA-Z]+$")) {
-                    Toast.makeText(Book.this, "Enter letters only", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Book.this, "Enter letters only for the name!", Toast.LENGTH_SHORT).show();
                 } else if(!contact.matches("^[0-9]+$")) {
                     Toast.makeText(Book.this, "Contact number should be numbers only", Toast.LENGTH_SHORT).show();
-                }else if(!people.matches("^[0-500]+$")) {
-                    Toast.makeText(Book.this, "Maximum of 500 guests are allowed", Toast.LENGTH_SHORT).show();
+                } else if(!description.matches("^[a-zA-Z]+$")) {
+                    Toast.makeText(Book.this, "Enter letters only in the description(Ex: Wedding/ Birthday", Toast.LENGTH_SHORT).show();
+                }else if(!people.matches("^[0-9]+$")) {
+                    Toast.makeText(Book.this, "Enter numbers only for the Number of People", Toast.LENGTH_SHORT).show();
                 }else{
                     boolean isInserted = myDb.addInfoBook(name, contact, description, people);
                     if (isInserted = true) {
-                        Toast.makeText(Book.this, "Order placed", Toast.LENGTH_LONG).show();
+                        Toast.makeText(Book.this, "Booking Completed", Toast.LENGTH_LONG).show();
                     } else {
                         Toast.makeText(Book.this, "Error", Toast.LENGTH_LONG).show();
                     }

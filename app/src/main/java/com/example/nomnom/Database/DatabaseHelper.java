@@ -233,15 +233,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return data;
     }
 
-    //Return only id with topic
-    public Cursor getfeedID(String topic) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        String query = "SELECT " + COLUMN_NAME_FID + " FROM " + TABLE_NAME_FEEDBACK +
-                " WHERE " + COLUMN_NAME_TOPIC + " = '" + topic + "' ";
-        Cursor data = db.rawQuery(query, null);
-        return data;
-    }
-
     //Delete user from register table
     public void deleteUser(int id, String username) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -254,14 +245,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     //Delete feedback from feedback table
-    public void deleteFeed(int id, String topic) {
+    public Integer deletefeed (String topic) {
         SQLiteDatabase db = this.getWritableDatabase();
-        String query = "DELETE FROM " + TABLE_NAME_FEEDBACK + " WHERE "
-                + COLUMN_NAME_FID + " = '" + id + "'" +
-                " AND " + COLUMN_NAME_TOPIC + " = '" + topic + "'";
-        Log.d(TAG, "deleteName: query: " + query);
-        Log.d(TAG, "deleteName: Deleting " + topic + " from database.");
-        db.execSQL(query);
+        String selection = COLUMN_NAME_TOPIC + " LIKE ?";
+        String[] selectionArgs = {topic};
+        int count = db.delete(TABLE_NAME_FEEDBACK,selection,selectionArgs);
+        return count;
     }
 
     //Delete data from Order table
@@ -294,12 +283,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     //Update data in feedback table
-    public void updateFeed(String newTopic, int id ,String oldTopic) {
+    public boolean updatefeedback(String topic, String description) {
         SQLiteDatabase db = this.getWritableDatabase();
-        String query = "UPDATE " + TABLE_NAME_FEEDBACK + " SET " + COLUMN_NAME_TOPIC + " = '" + newTopic + "' WHERE " + COLUMN_NAME_FID + " = '" + id + "'" + " AND " + COLUMN_NAME_TOPIC + " = '" + oldTopic + "'";
-        Log.d(TAG,"updateUsername:query: "+query);
-        Log.d(TAG,"updateUsername:setting name to: "+newTopic);
-        db.execSQL(query);
+
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_NAME_TOPIC, topic);
+        values.put(COLUMN_NAME_DESCRIPTION, description);
+
+        String selection = COLUMN_NAME_TOPIC + " LIKE ?";
+        String[] selectionArgs = {topic};
+        int count = db.update(TABLE_NAME_FEEDBACK, values, selection,selectionArgs);
+        if(count > 0){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     //Update data in Order table
