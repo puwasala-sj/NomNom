@@ -4,18 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/a2"
+    android:background="@drawable/a10"
     tools:context=".ListFeedback">
 
     <TextView
         android:id="@+id/listFeedback"
-        android:layout_width="255dp"
-        android:layout_height="53dp"
+        android:layout_width="348dp"
+        android:layout_height="65dp"
         android:layout_marginTop="32dp"
         android:fontFamily="serif"
         android:text="@string/listFeedback"
         android:textAlignment="center"
-        android:textColor="#4D1B10"
+        android:textColor="#FFFFFF"
         android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
