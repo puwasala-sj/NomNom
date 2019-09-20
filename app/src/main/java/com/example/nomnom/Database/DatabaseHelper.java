@@ -266,7 +266,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void deleteFeed(int id, String topic) {
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "DELETE FROM " + TABLE_NAME_FEEDBACK + " WHERE "
-                + COLUMN_NAME_ID + " = '" + id + "'" +
+                + COLUMN_NAME_FID + " = '" + id + "'" +
                 " AND " + COLUMN_NAME_TOPIC + " = '" + topic + "'";
         Log.d(TAG, "deleteName: query: " + query);
         Log.d(TAG, "deleteName: Deleting " + topic + " from database.");

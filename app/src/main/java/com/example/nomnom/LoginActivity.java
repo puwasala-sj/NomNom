@@ -27,8 +27,16 @@ public class LoginActivity extends AppCompatActivity {
         db = new DatabaseHelper(this);
         Username = (EditText)findViewById(R.id.username);
         Password = (EditText)findViewById(R.id.password);
-        Login = (Button) findViewById(R.id.btn1);
+        Notregister = (TextView)findViewById(R.id.register1);
+        Notregister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent registerintent = new Intent(LoginActivity.this, Register.class);
+                startActivity(registerintent);
+            }
+        });
 
+        Login = (Button) findViewById(R.id.btn1);
         Login.setOnClickListener(new View.OnClickListener(){
             @Override
             public void  onClick(View view){
@@ -49,6 +57,5 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
-
     }
 }
