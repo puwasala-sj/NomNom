@@ -41,10 +41,10 @@ public class edit_book extends AppCompatActivity {
         Cursor bookings = db.getAllBookings();
         ArrayList<String> listBooking = new ArrayList<>();
         while(bookings.moveToNext()){
-            listBooking.add("Name :"+bookings.getString(1));
-            listBooking.add("Contact Number :"+bookings.getString(2));
-            listBooking.add("Description :"+bookings.getString(3));
-            listBooking.add("People:"+bookings.getString(4));
+            listBooking.add(bookings.getString(1));
+            listBooking.add(bookings.getString(2));
+            listBooking.add(bookings.getString(3));
+            listBooking.add(bookings.getString(4));
         }
         ListAdapter adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,listBooking);
         listView.setAdapter(adapter);

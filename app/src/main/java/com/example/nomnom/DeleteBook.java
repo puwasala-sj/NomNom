@@ -47,7 +47,7 @@ public class DeleteBook extends AppCompatActivity {
             public void onClick(View view) {
                 String name = eText.getText().toString();
                 if(!name.equals("")){
-                    db.updateBooking(name,selectedID,selectedName);
+                    db.updateBook(name,selectedID,selectedName);
                     Toast.makeText(DeleteBook.this, "Updated successfully", Toast.LENGTH_SHORT).show();
                 }else{
                     Toast.makeText(DeleteBook.this, "Enter a name", Toast.LENGTH_SHORT).show();
@@ -58,7 +58,7 @@ public class DeleteBook extends AppCompatActivity {
         deleteBook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                db.deleteBooking(selectedID,selectedName);
+                db.deleteBook(selectedID,selectedName);
                 eText.setText("");
                 Toast.makeText(DeleteBook.this, "Deleted successfully", Toast.LENGTH_SHORT).show();
             }

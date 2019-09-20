@@ -42,7 +42,7 @@ public class EditFeedback extends AppCompatActivity {
             public void onClick(View view) {
                 String topic = editText.getText().toString();
                 if(!topic.equals("")){
-                    db.updateFeed(topic,selectedID,selectedTopic);
+                    db.updatefeed(topic,selectedID,selectedTopic);
                     Toast.makeText(EditFeedback.this, "Updated successfully", Toast.LENGTH_SHORT).show();
                 }else{
                     Toast.makeText(EditFeedback.this, "You must enter a name", Toast.LENGTH_SHORT).show();

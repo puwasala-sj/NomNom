@@ -52,7 +52,7 @@ public class ListFeedback extends AppCompatActivity {
                 String topic = adapterView.getItemAtPosition(i).toString();
                 Log.d(TAG, "onItemClick: You Clicked on " + topic);
 
-                Cursor data = db.getfeedID(topic); //get the id associated with that name
+                Cursor data = db.getFeedID(topic); //get the id associated with that name
                 int id = -1;
                 while(data.moveToNext()){
                     id = data.getInt(0);
