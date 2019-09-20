@@ -10,8 +10,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AboutUs"></activity>
-        <activity android:name=".DeleteOrder" />
+        <activity android:name=".DeleteOrder"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,6 +23,10 @@
         <activity android:name=".Register" />
         <activity android:name=".EditOrder" />
         <activity android:name=".Home" />
+        <activity android:name=".AboutUs"/>
+        <activity android:name=".DeleteBook"/>
+        <activity android:name=".EditFeedback"/>
+        <activity android:name=".ListFeedback"/>
         <activity android:name=".Book" />
         <activity android:name=".edit_book" />
         <activity android:name=".FeedBack" />

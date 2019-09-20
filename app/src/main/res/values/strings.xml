@@ -30,10 +30,13 @@
     <string name="editOrder">Edit Order</string>
     <string name="deleteOrder">Delete Order</string>
     <string name="orderId">Order ID</string>
+    <string name="editBook">Edit Order</string>
+    <string name="CancelBook">Delete Order</string>
     <string name="editId">EditId</string>
     <string name="already_registered">Already registered?</string>
     <string name="topic">Topic</string>
     <string name="description">Description</string>
+    <string name="listFeedback">List Feedback</string>
     <string name="deletefeed">Delete Feedback</string>
     <string name="updatefeed">Update Feedback</string>
     <string name="registerFunctions">User List</string>
@@ -48,7 +51,6 @@
     <string name="btnBook">Book Now</string>
     <string name="viewBook">View Bookings</string>
     <string name="yourBooking">Your Bookings</string>
-    <string name="editBook">Edit Bookings</string>
     <string name="deleteBook">Cancel Booking</string>
     <string name="aboutnom2">About Nom Nom</string>
     <string name="intro1">Loved by you, delivered by us...!!!</string>

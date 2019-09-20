@@ -37,22 +37,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/yourBooking" />
 
-    <Button
-        android:id="@+id/deleteBook"
-        android:layout_width="227dp"
-        android:layout_height="65dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="#A8008577"
-        android:text="@string/deleteBook"
-        android:textColor="#FFFFFF"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ListView" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

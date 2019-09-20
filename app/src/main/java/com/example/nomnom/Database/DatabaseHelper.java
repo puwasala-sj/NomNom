@@ -233,6 +233,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return data;
     }
 
+    //Return only id with topic
+    public Cursor getFeedID(String topic) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT " + COLUMN_NAME_FID + " FROM " + TABLE_NAME_FEEDBACK +
+                " WHERE " + COLUMN_NAME_TOPIC + " = '" + topic + "' ";
+        Cursor data = db.rawQuery(query, null);
+        return data;
+    }
+
+    //Return only id with booking
+    public Cursor getbookID(String name) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT " + COLUMN_NAME_BID + " FROM " + TABLE_NAME_BOOKINGS +
+                " WHERE " + COLUMN_BNAME + " = '" + name + "' ";
+        Cursor data = db.rawQuery(query, null);
+        return data;
+    }
+
     //Delete user from register table
     public void deleteUser(int id, String username) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -245,12 +263,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     //Delete feedback from feedback table
-    public Integer deletefeed (String topic) {
+    public void deleteFeed(int id, String topic) {
         SQLiteDatabase db = this.getWritableDatabase();
-        String selection = COLUMN_NAME_TOPIC + " LIKE ?";
-        String[] selectionArgs = {topic};
-        int count = db.delete(TABLE_NAME_FEEDBACK,selection,selectionArgs);
-        return count;
+        String query = "DELETE FROM " + TABLE_NAME_FEEDBACK + " WHERE "
+                + COLUMN_NAME_ID + " = '" + id + "'" +
+                " AND " + COLUMN_NAME_TOPIC + " = '" + topic + "'";
+        Log.d(TAG, "deleteName: query: " + query);
+        Log.d(TAG, "deleteName: Deleting " + topic + " from database.");
+        db.execSQL(query);
     }
 
     //Delete data from Order table
@@ -265,12 +285,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     //Delete data from Booking table
-    public Integer deleteBooking (String name) {
-        SQLiteDatabase db = this.getReadableDatabase();
-        String selection = COLUMN_BNAME + "LIKE ?";
-        String[] selectionArgs = {name};
-        int count = db.delete(TABLE_NAME_BOOKINGS,selection,selectionArgs);
-        return count;
+    public void deleteBook (int bookID, String name) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "DELETE FROM " + TABLE_NAME_BOOKINGS + " WHERE "
+                + COLUMN_NAME_OID + " = '" + bookID + "'" +
+                " AND " + COLUMN_NAME + " = '" + name + "'";
+        Log.d(TAG, "deleteName: query: " + query);
+        Log.d(TAG, "deleteName: Deleting " + name + " from database.");
+        db.execSQL(query);
     }
 
     //Update data in register table
@@ -283,22 +305,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     //Update data in feedback table
-    public boolean updatefeedback(String topic, String description) {
+    public void updatefeed(String newtopic, int id ,String oldtopic) {
         SQLiteDatabase db = this.getWritableDatabase();
-
-        ContentValues values = new ContentValues();
-        values.put(COLUMN_NAME_TOPIC, topic);
-        values.put(COLUMN_NAME_DESCRIPTION, description);
-
-        String selection = COLUMN_NAME_TOPIC + " LIKE ?";
-        String[] selectionArgs = {topic};
-        int count = db.update(TABLE_NAME_FEEDBACK, values, selection,selectionArgs);
-        if(count > 0){
-            return true;
-        }
-        else{
-            return false;
-        }
+        String query = "UPDATE " + TABLE_NAME_FEEDBACK + " SET " + COLUMN_NAME_FID + " = '" + newtopic + "' WHERE " + COLUMN_NAME_FID + " = '" + id + "'" + " AND " + COLUMN_NAME_TOPIC + " = '" + oldtopic + "'";
+        Log.d(TAG,"updateUsername:query: "+query);
+        Log.d(TAG,"updateUsername:setting name to: "+newtopic);
+        db.execSQL(query);
     }
 
     //Update data in Order table
@@ -311,23 +323,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     //Update data in Booking table
-    public boolean updateBooking(String name, String contactNum, String description, String people) {
+    public void updateBook(String newname, int bID ,String oldname) {
         SQLiteDatabase db = this.getWritableDatabase();
-
-        ContentValues values = new ContentValues();
-        values.put(COLUMN_BNAME, name);
-        values.put(COLUMN_NAME_BCONTACT, contactNum);
-        values.put(COLUMN_NAME_BDESCRIPTION, description);
-        values.put(COLUMN_NAME_BPEOPLE, people);
-
-        String selection = COLUMN_BNAME + " LIKE ?";
-        String[] selectionArgs = {name};
-        int count = db.update(TABLE_NAME_BOOKINGS, values, selection,selectionArgs);
-        if(count > 0){
-            return true;
-        }
-        else{
-            return false;
-        }
+        String query = "UPDATE " + TABLE_NAME_BOOKINGS + " SET " + COLUMN_BNAME + " = '" + newname + "' WHERE " + COLUMN_NAME_BID + " = '" + bID + "'" + " AND " + COLUMN_BNAME + " = '" + oldname + "'";
+        Log.d(TAG,"updateUsername:query: "+query);
+        Log.d(TAG,"updateUsername:setting name to: "+newname);
+        db.execSQL(query);
     }
 }
