@@ -233,6 +233,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return data;
     }
 
+    //Return only id with topic
+    public Cursor getFeedID(String topic) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT " + COLUMN_NAME_FID + " FROM " + TABLE_NAME_FEEDBACK +
+                " WHERE " + COLUMN_NAME_TOPIC + " = '" + topic + "' ";
+        Cursor data = db.rawQuery(query, null);
+        return data;
+    }
+
+    //Return only id with booking
+    public Cursor getbookID(String name) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT " + COLUMN_NAME_BID + " FROM " + TABLE_NAME_BOOKINGS +
+                " WHERE " + COLUMN_BNAME + " = '" + name + "' ";
+        Cursor data = db.rawQuery(query, null);
+        return data;
+    }
+
     //Delete user from register table
     public void deleteUser(int id, String username) {
         SQLiteDatabase db = this.getWritableDatabase();
