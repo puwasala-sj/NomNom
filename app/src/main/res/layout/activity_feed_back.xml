@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/b9"
+    android:background="@drawable/a4"
     tools:context=".FeedBack">
 
     <TextView
@@ -16,7 +16,7 @@
         android:layout_marginEnd="8dp"
         android:fontFamily="serif"
         android:text="@string/feedback"
-        android:textColor="#008577"
+        android:textColor="#F72579"
         android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -31,7 +31,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
-        android:background="#FFFFFF"
+        android:background="#E6FFFFFF"
         android:ems="10"
         android:hint="@string/topic"
         android:inputType="textPersonName"
@@ -48,7 +48,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
-        android:background="#FFFFFF"
+        android:background="#E6FFFFFF"
         android:ems="10"
         android:gravity="start|top"
         android:hint="@string/description"
@@ -66,7 +66,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="28dp"
         android:layout_marginEnd="8dp"
-        android:background="#9A666875"
+        android:background="#B0F72579"
         android:text="@string/send"
         android:textAlignment="center"
         android:textColor="#FFFF"
@@ -84,7 +84,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="8dp"
-        android:background="#008577"
+        android:background="#B0F72579"
         android:text="@string/view"
         android:textColor="#FFFF"
         android:textSize="18sp"
@@ -94,21 +94,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/send" />
 
-    <Button
-        android:id="@+id/deletefeed"
-        android:layout_width="220dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="50dp"
-        android:background="#9A666875"
-        android:text="@string/deletefeed"
-        android:textColor="#FFFF"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view"
-        app:layout_constraintVertical_bias="0.057" />
 </androidx.constraintlayout.widget.ConstraintLayout>

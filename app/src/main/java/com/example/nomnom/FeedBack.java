@@ -35,46 +35,12 @@ public class FeedBack extends AppCompatActivity {
         viewfeed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Cursor res = db.getAllfeedback();
-                if (res.getCount() == 0) {
-                    ///Show message
-                    showMessage("ERROR! ", "Nothing Found");
-                    return;
-                }
-
-                StringBuffer buffer = new StringBuffer();
-                while (res.moveToNext()) {
-                    buffer.append("ID :" + res.getString(0) + "\n");
-                    buffer.append("Topic :" + res.getString(1) + "\n");
-                    buffer.append("Description :" + res.getString(2) + "\n\n");
-                }
-
-                //Show all data
-                showMessage("Data", buffer.toString());
+                Intent RList = new Intent(FeedBack.this,ListFeedback.class);
+                startActivity(RList);
             }
-        });
-        deletefeed =(Button)findViewById(R.id.deletefeed);
-        deletefeed.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                        Integer deletedRows = db.deletefeed(Topic.getText().toString());
-                        if(deletedRows > 0)
-                            Toast.makeText(FeedBack.this, "Data Deleted Successfully", Toast.LENGTH_LONG).show();
-                        else
-                            Toast.makeText(FeedBack.this, "Data Not Deleted", Toast.LENGTH_LONG).show();
-                    }
-
         });
         AddFeed();
     }
-    public void showMessage(String title, String Message) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setCancelable(true);
-        builder.setTitle(title);
-        builder.setMessage(Message);
-        builder.show();
-    }
-
     public void AddFeed(){
         Send.setOnClickListener(new View.OnClickListener() {
             @Override
