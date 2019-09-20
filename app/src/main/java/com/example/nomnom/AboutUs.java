@@ -26,5 +26,14 @@ public class AboutUs extends AppCompatActivity {
             }
         });
 
+        contact = (Button) findViewById(R.id.contactus);
+        contact.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(AboutUs.this, ContactUs.class);
+                startActivity(intent);
+            }
+        });
+
     }
 }

@@ -307,7 +307,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     //Update data in feedback table
     public void updatefeed(String newtopic, int id ,String oldtopic) {
         SQLiteDatabase db = this.getWritableDatabase();
-        String query = "UPDATE " + TABLE_NAME_FEEDBACK + " SET " + COLUMN_NAME_FID + " = '" + newtopic + "' WHERE " + COLUMN_NAME_FID + " = '" + id + "'" + " AND " + COLUMN_NAME_TOPIC + " = '" + oldtopic + "'";
+        String query = "UPDATE " + TABLE_NAME_FEEDBACK + " SET " + COLUMN_NAME_TOPIC+ " = '" + newtopic + "' WHERE " + COLUMN_NAME_FID + " = '" + id + "'" + " AND " + COLUMN_NAME_TOPIC + " = '" + oldtopic + "'";
         Log.d(TAG,"updateUsername:query: "+query);
         Log.d(TAG,"updateUsername:setting name to: "+newtopic);
         db.execSQL(query);
