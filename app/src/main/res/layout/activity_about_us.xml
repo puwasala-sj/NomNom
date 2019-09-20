@@ -4,19 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/a13"
+    android:background="@drawable/b9"
     tools:context=".AboutUs">
 
     <TextView
-        android:id="@+id/aboutnom2"
+        android:id="@+id/aboutus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="68dp"
         android:layout_marginEnd="8dp"
         android:fontFamily="serif"
         android:text="@string/aboutnom2"
-        android:textColor="#DFE2DF"
+        android:textColor="#20c714"
         android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -25,71 +25,40 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/intro1"
-        android:layout_width="415dp"
-        android:layout_height="45dp"
+        android:id="@+id/intro"
+        android:layout_width="368dp"
+        android:layout_height="92dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"
-        android:fontFamily="sans-serif-smallcaps"
+        android:fontFamily="sans-serif-condensed"
         android:text="@string/intro1"
         android:textAlignment="center"
         android:textAllCaps="false"
-        android:textColor="#00FF3F"
-        android:textSize="22sp"
+        android:textColor="#c214c7"
+        android:textSize="32sp"
         android:textStyle="bold|italic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.481"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/aboutnom2" />
+        app:layout_constraintTop_toBottomOf="@+id/aboutus" />
 
     <TextView
         android:id="@+id/intro2"
-        android:layout_width="384dp"
-        android:layout_height="165dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="260dp"
         android:layout_marginEnd="8dp"
-        android:background="#83E9E2E2"
-        android:fontFamily="sans-serif-medium"
+        android:fontFamily="serif"
         android:text="@string/intro2"
         android:textAlignment="center"
-        android:textColor="#000000"
-        android:textSize="20sp"
-        android:textStyle="italic"
+        android:textColor="#00d2ff"
+        android:textSize="24sp"
+        android:textStyle="bold|italic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/intro1" />
-
-    <Button
-        android:id="@+id/feedback"
-        android:layout_width="165dp"
-        android:layout_height="65dp"
-        android:layout_marginTop="16dp"
-        android:background="#7A0EF80E"
-        android:text="@string/feedback"
-        android:textAlignment="center"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/intro2" />
-
-    <Button
-        android:id="@+id/contactus"
-        android:layout_width="165dp"
-        android:layout_height="65dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginBottom="8dp"
-        android:background="#7A0EF80E"
-        android:text="@string/contactus"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/feedback"
-        app:layout_constraintVertical_bias="0.006" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
