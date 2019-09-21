@@ -33,8 +33,8 @@
         android:layout_height="65dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="119dp"
-        android:layout_marginBottom="47dp"
+        android:layout_marginStart="116dp"
+        android:layout_marginBottom="88dp"
         android:background="#B963CA18"
         android:text="@string/place"
         android:textSize="18sp"
@@ -46,10 +46,25 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="126dp"
-        android:layout_marginBottom="313dp"
+        android:layout_marginEnd="128dp"
+        android:layout_marginBottom="334dp"
         android:text="Rs.1000.00"
+        android:textColor="#FF0000"
         android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/desc"
+        android:layout_width="346dp"
+        android:layout_height="182dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="35dp"
+        android:layout_marginBottom="142dp"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:text="Description here"
+        android:textColor="#FD000000"
+        android:textSize="18sp"
         android:textStyle="bold" />
 
 </RelativeLayout>

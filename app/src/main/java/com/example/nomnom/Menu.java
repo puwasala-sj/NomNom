@@ -22,6 +22,31 @@ public class Menu extends AppCompatActivity {
 
     String[] fastfoodPrice1 = {"Rs.1999.00","Rs.2150.00","Rs.1850.00","Rs.2280.00","Rs.2099.00","Rs.790.00","Rs.890.00","Rs.500.00","Rs.860.00","Rs.430.00","Rs.520.00","Rs.590.00","Rs.610.00","Rs.630.00","Rs.540.00","Rs.900.00","Rs.390.00","Rs.310.00",
             "Rs.490.00","Rs.290.00","Rs.420.00","Rs.350.00","Rs.510.00","Rs.200.00"};
+
+    String[] foodDescription = {"Pizza crust is layered with smokey bbq sauce, chicken pieces, creamy mozzarella, sweet pineapple, and flavorful red onion and cilantro. The best pizza recipe ever? It just might be!",
+            "Hot cuttlefish tossed with chili flakes and butter, accompanied by spring onion and capsicum, blanketed with mozzarella cheese on a light, airy crust glazed in garlic butter.",
+            "This Tandoori Chicken Pizza is made from scratch and loaded with intense flavor in every bite!",
+            "A fiery mix of prawns, devilled fish, olives, bell peppers and onions with a double layer of mozzarella cheese.",
+            "Succulent prawns, garlic, diced tomato, green capsicum and mozzarella finished with aioli drizzle.",
+            "A nice break from typical hamburgers and much healthier for you. These chicken burgers are flavorful, simple to make, and delicious.",
+            "Chicken burgers don’t have to be boring! This Spicy Chicken Burger is packed with a flavorful kick, covered in a delicious cheese sauce, and served on a toasted brioche bun.",
+            "Sink your teeth into a delicious Nom Nom-style, hamburger recipe made from lean beef.",
+            "This burger consists of a super crispy & flakey chicken patty made out of the special blend of Knorr Coating Mix top with Hellmann's Classic Mayonnaise brings it all together. Try out and titillate your taste buds.",
+            "Unleash your inner herbivore with this hearty veggie burger.",
+            "Craving a classic Italian sub? Try out the Nom Nom's special submarine and you'll be ecstatic!",
+            "Yes, you can always grab a sub from any of the restaurants out there, but we ensure that we have the creamy and cheesy chicken sub that you can whip up at anytime.",
+            "Strips of grilled chicken breast made to a Southern USA recipe. Topped with onion, tomato, lettuce and mayonnaise.",
+            "Chicken Tacos are the PERFECT quick weeknight dinner. This Spicy Baked Chicken Tacos recipe has lots of flavor & none of the stress.",
+            "A spicy, smoky chicken filling in soft tortillas, this moreish, low-calorie dinner is on the table in just 20 minutes.",
+            "Make a weeknight meal or last minute entertainment a breeze with Easy Shrimp Tacos. Spicy, creamy and healthy!",
+            "The Chicago Dog is a Windy City classic, and a big favorite with sports fans!",
+            "These slow cooker hot dogs are swimming in a chili cheese hot tub of deliciousness, and only have THREE ingredients.Winner winner hot dog dinner!",
+            "Chicken wings are a favorite any time of year. Grill some and believe us, you won’t have any left. You won’t need any paper napkins, they’re finger-licking good.",
+            "Don't think twice to try out Our best Nom Nom French fries for hot and crispy, yet fluffy potato fries, every time!",
+            "Smooth and creamy, it’s topped with delicious strawberries and strawberry sauce – the perfect summer treat!",
+            "Cakey on the outside and fudgy in the middle, You’ll never buy chocolate brownies again from anywhere else!",
+            "Virgin Mojito is a perfect blend of mint and lemon flavours into a refreshing mix which rejuvenates the senses and makes you calm at once.",
+            "Purified water from a mineral spring that contains various minerals, such as salts and sulfur compounds."};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +64,7 @@ public class Menu extends AppCompatActivity {
                 intent.putExtra("name",fastfoodNames1[i]);
                 intent.putExtra("image",fastfoodImages1[i]);
                 intent.putExtra("price",fastfoodPrice1[i]);
+                intent.putExtra("description",foodDescription[i]);
                 startActivity(intent);
 
             }
@@ -68,6 +94,7 @@ public class Menu extends AppCompatActivity {
             TextView name1 = view2.findViewById(R.id.fastfood1);
             ImageView image1 = view2.findViewById(R.id.images1);
             TextView price1 = view2.findViewById(R.id.fastprice1);
+
             name1.setText(fastfoodNames1[i]);
             image1.setImageResource(fastfoodImages1[i]);
             price1.setText(fastfoodPrice1[i]);

@@ -14,6 +14,7 @@ public class GridItem1 extends AppCompatActivity {
     TextView name1;
     ImageView image1;
     TextView price1;
+    TextView desc;
 
     Button order;
     @Override
@@ -24,12 +25,14 @@ public class GridItem1 extends AppCompatActivity {
         name1 = findViewById(R.id.griddata1);
         image1 = findViewById(R.id.imageView1);
         price1 = findViewById(R.id.price);
+        desc = findViewById(R.id.desc);
         order = (Button) findViewById(R.id.place);
 
         Intent intent = getIntent();
         name1.setText(intent.getStringExtra("name"));
         image1.setImageResource(intent.getIntExtra("image",0));
         price1.setText(intent.getStringExtra("price"));
+        desc.setText(intent.getStringExtra("description"));
         order.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
