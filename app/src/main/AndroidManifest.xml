@@ -10,7 +10,9 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ContactUs"></activity>
+        <activity android:name=".GridItem1"></activity>
+        <activity android:name=".Menu" />
+        <activity android:name=".ContactUs" />
         <activity android:name=".DeleteOrder" />
         <activity android:name=".MainActivity">
             <intent-filter>

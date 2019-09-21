@@ -30,7 +30,7 @@ public class Home extends AppCompatActivity {
         menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Home.this, PlaceOrder.class);
+                Intent intent = new Intent(Home.this, Menu.class);
                 startActivity(intent);
             }
         });
