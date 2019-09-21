@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/b11"
+    android:background="@drawable/a5"
     tools:context=".DeleteOrder">
 
 
@@ -24,15 +24,14 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
-
     <Button
         android:id="@+id/deleteBook"
-        android:layout_width="170dp"
+        android:layout_width="175dp"
         android:layout_height="65dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="44dp"
         android:layout_marginEnd="8dp"
-        android:background="#ABFFFFFF"
+        android:background="#99FF0101"
         android:text="@string/deleteBook"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -44,13 +43,13 @@
 
     <Button
         android:id="@+id/editBook"
-        android:layout_width="170dp"
+        android:layout_width="175dp"
         android:layout_height="65dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:background="#ABFFFFFF"
+        android:background="#99FF0101"
         android:text="@string/editBook"
         android:textSize="18sp"
         android:textStyle="bold"
