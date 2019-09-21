@@ -57,5 +57,8 @@
     <string name="intro1">Loved by you, delivered by us..!!!</string>
     <string name="intro2">For us, it\'s not about bringing you good food from your favourite menu. It\'s about making a connection, which is why we sit down with our chefs, dreaming up the menus that will arrive fresh and full of flavour... TRY US!!! </string>
     <string name="place">Place Order</string>
-
+    <string name="add">108/26, Nom nom restaurant, Villa road, Colombo 07</string>
+    <string name="mail">nomnom@gmail.com</string>
+    <string name="num1">011-5555667</string>
+    <string name="num2">011-5555666</string>
 </resources>
