@@ -16,7 +16,7 @@
         android:fontFamily="serif"
         android:text="BBQ Chicken Pizza"
         android:textColor="#000"
-        android:textSize="32sp" />
+        android:textSize="32sp"/>
 
     <ImageView
         android:id="@+id/imageView1"
