@@ -31,7 +31,7 @@
     <string name="editOrder">Edit Order</string>
     <string name="deleteOrder">Delete Order</string>
     <string name="orderId">Order ID</string>
-    <string name="editBook">Edit Order</string>
+    <string name="editBook">Edit Booking</string>
     <string name="CancelBook">Delete Order</string>
     <string name="editId">EditId</string>
     <string name="already_registered">Already registered?</string>
